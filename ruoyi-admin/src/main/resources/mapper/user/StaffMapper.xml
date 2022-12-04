@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.user.mapper.StaffMapper">
+    
+    <resultMap type="Staff" id="StaffResult">
+        <result property="no"    column="no"    />
+        <result property="sid"    column="sid"    />
+        <result property="name"    column="name"    />
+        <result property="password"    column="password"    />
+    </resultMap>
+
+    <sql id="selectStaffVo">
+        select no, sid, name, password from staff
+    </sql>
+
+    <select id="selectStaffList" parameterType="Staff" resultMap="StaffResult">
+        <include refid="selectStaffVo"/>
+        <where>  
+            <if test="sid != null  and sid != ''"> and sid = #{sid}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+        </where>
+    </select>
+    
+    <select id="selectStaffByNo" parameterType="Long" resultMap="StaffResult">
+        <include refid="selectStaffVo"/>
+        where no = #{no}
+    </select>
+        
+    <insert id="insertStaff" parameterType="Staff" useGeneratedKeys="true" keyProperty="no">
+        insert into staff
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null and sid != ''">sid,</if>
+            <if test="name != null">name,</if>
+            <if test="password != null and password != ''">password,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null and sid != ''">#{sid},</if>
+            <if test="name != null">#{name},</if>
+            <if test="password != null and password != ''">#{password},</if>
+         </trim>
+    </insert>
+
+    <update id="updateStaff" parameterType="Staff">
+        update staff
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sid != null and sid != ''">sid = #{sid},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+        </trim>
+        where no = #{no}
+    </update>
+
+    <delete id="deleteStaffByNo" parameterType="Long">
+        delete from staff where no = #{no}
+    </delete>
+
+    <delete id="deleteStaffByNos" parameterType="String">
+        delete from staff where no in 
+        <foreach item="no" collection="array" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.user.mapper.CitizenMapper">
+    
+    <resultMap type="Citizen" id="CitizenResult">
+        <result property="no"    column="no"    />
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="phoneNumber"    column="phoneNumber"    />
+        <result property="healthCode"    column="healthCode"    />
+        <result property="password"    column="password"    />
+    </resultMap>
+
+    <sql id="selectCitizenVo">
+        select no, id, name, phoneNumber, healthCode, password from citizen
+    </sql>
+
+    <select id="selectCitizenList" parameterType="Citizen" resultMap="CitizenResult">
+        <include refid="selectCitizenVo"/>
+        <where>  
+            <if test="id != null  and id != ''"> and id = #{id}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="phoneNumber != null  and phoneNumber != ''"> and phoneNumber = #{phoneNumber}</if>
+            <if test="healthCode != null  and healthCode != ''"> and healthCode = #{healthCode}</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+        </where>
+    </select>
+    
+    <select id="selectCitizenByNo" parameterType="Long" resultMap="CitizenResult">
+        <include refid="selectCitizenVo"/>
+        where no = #{no}
+    </select>
+        
+    <insert id="insertCitizen" parameterType="Citizen" useGeneratedKeys="true" keyProperty="no">
+        insert into citizen
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">id,</if>
+            <if test="name != null and name != ''">name,</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phoneNumber,</if>
+            <if test="healthCode != null and healthCode != ''">healthCode,</if>
+            <if test="password != null and password != ''">password,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">#{id},</if>
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
+            <if test="healthCode != null and healthCode != ''">#{healthCode},</if>
+            <if test="password != null and password != ''">#{password},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCitizen" parameterType="Citizen">
+        update citizen
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="id != null and id != ''">id = #{id},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phoneNumber = #{phoneNumber},</if>
+            <if test="healthCode != null and healthCode != ''">healthCode = #{healthCode},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+        </trim>
+        where no = #{no}
+    </update>
+
+    <delete id="deleteCitizenByNo" parameterType="Long">
+        delete from citizen where no = #{no}
+    </delete>
+
+    <delete id="deleteCitizenByNos" parameterType="String">
+        delete from citizen where no in 
+        <foreach item="no" collection="array" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </delete>
+
+</mapper>

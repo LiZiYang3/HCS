@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.place.mapper.CoderesultMapper">
+    
+    <resultMap type="Coderesult" id="CoderesultResult">
+        <result property="no"    column="no"    />
+        <result property="pid"    column="pid"    />
+        <result property="time"    column="time"    />
+        <result property="id"    column="id"    />
+    </resultMap>
+
+    <sql id="selectCoderesultVo">
+        select no, pid, time, id from coderesult
+    </sql>
+
+    <select id="selectCoderesultList" parameterType="Coderesult" resultMap="CoderesultResult">
+        <include refid="selectCoderesultVo"/>
+        <where>  
+            <if test="pid != null  and pid != ''"> and pid = #{pid}</if>
+            <if test="time != null "> and time = #{time}</if>
+            <if test="id != null  and id != ''"> and id = #{id}</if>
+        </where>
+    </select>
+    
+    <select id="selectCoderesultByNo" parameterType="Long" resultMap="CoderesultResult">
+        <include refid="selectCoderesultVo"/>
+        where no = #{no}
+    </select>
+        
+    <insert id="insertCoderesult" parameterType="Coderesult" useGeneratedKeys="true" keyProperty="no">
+        insert into coderesult
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid != null and pid != ''">pid,</if>
+            <if test="time != null">time,</if>
+            <if test="id != null and id != ''">id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pid != null and pid != ''">#{pid},</if>
+            <if test="time != null">#{time},</if>
+            <if test="id != null and id != ''">#{id},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCoderesult" parameterType="Coderesult">
+        update coderesult
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="pid != null and pid != ''">pid = #{pid},</if>
+            <if test="time != null">time = #{time},</if>
+            <if test="id != null and id != ''">id = #{id},</if>
+        </trim>
+        where no = #{no}
+    </update>
+
+    <delete id="deleteCoderesultByNo" parameterType="Long">
+        delete from coderesult where no = #{no}
+    </delete>
+
+    <delete id="deleteCoderesultByNos" parameterType="String">
+        delete from coderesult where no in 
+        <foreach item="no" collection="array" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </delete>
+
+</mapper>

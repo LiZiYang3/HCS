@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.place.mapper.PlaceMapper">
+    
+    <resultMap type="Place" id="PlaceResult">
+        <result property="no"    column="no"    />
+        <result property="pid"    column="pid"    />
+        <result property="placeName"    column="placeName"    />
+        <result property="riskGrade"    column="riskGrade"    />
+        <result property="placeCodeURL"    column="placeCodeURL"    />
+        <result property="personNumber"    column="personNumber"    />
+    </resultMap>
+
+    <sql id="selectPlaceVo">
+        select no, pid, placeName, riskGrade, placeCodeURL, personNumber from place
+    </sql>
+
+    <select id="selectPlaceList" parameterType="Place" resultMap="PlaceResult">
+        <include refid="selectPlaceVo"/>
+        <where>  
+            <if test="pid != null  and pid != ''"> and pid = #{pid}</if>
+            <if test="placeName != null  and placeName != ''"> and placeName like concat('%', #{placeName}, '%')</if>
+            <if test="riskGrade != null  and riskGrade != ''"> and riskGrade = #{riskGrade}</if>
+            <if test="placeCodeURL != null  and placeCodeURL != ''"> and placeCodeURL = #{placeCodeURL}</if>
+            <if test="personNumber != null "> and personNumber = #{personNumber}</if>
+        </where>
+    </select>
+    
+    <select id="selectPlaceByNo" parameterType="Long" resultMap="PlaceResult">
+        <include refid="selectPlaceVo"/>
+        where no = #{no}
+    </select>
+        
+    <insert id="insertPlace" parameterType="Place" useGeneratedKeys="true" keyProperty="no">
+        insert into place
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid != null and pid != ''">pid,</if>
+            <if test="placeName != null">placeName,</if>
+            <if test="riskGrade != null">riskGrade,</if>
+            <if test="placeCodeURL != null">placeCodeURL,</if>
+            <if test="personNumber != null">personNumber,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pid != null and pid != ''">#{pid},</if>
+            <if test="placeName != null">#{placeName},</if>
+            <if test="riskGrade != null">#{riskGrade},</if>
+            <if test="placeCodeURL != null">#{placeCodeURL},</if>
+            <if test="personNumber != null">#{personNumber},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePlace" parameterType="Place">
+        update place
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="pid != null and pid != ''">pid = #{pid},</if>
+            <if test="placeName != null">placeName = #{placeName},</if>
+            <if test="riskGrade != null">riskGrade = #{riskGrade},</if>
+            <if test="placeCodeURL != null">placeCodeURL = #{placeCodeURL},</if>
+            <if test="personNumber != null">personNumber = #{personNumber},</if>
+        </trim>
+        where no = #{no}
+    </update>
+
+    <delete id="deletePlaceByNo" parameterType="Long">
+        delete from place where no = #{no}
+    </delete>
+
+    <delete id="deletePlaceByNos" parameterType="String">
+        delete from place where no in 
+        <foreach item="no" collection="array" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </delete>
+
+</mapper>
