@@ -58,4 +58,6 @@ public interface ICoderesultService
      * @return 结果
      */
     public int deleteCoderesultByNo(Long no);
+
+    public List<Integer> getMonthlyPlaceScanRecordIncrement();
 }

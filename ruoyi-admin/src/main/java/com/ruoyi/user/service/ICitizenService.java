@@ -1,6 +1,9 @@
 package com.ruoyi.user.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.user.domain.Citizen;
 
 /**
@@ -58,4 +61,6 @@ public interface ICitizenService
      * @return 结果
      */
     public int deleteCitizenByNo(Long no);
+
+    public ArrayList<Map<String, String>> getCitizenCodeColor();
 }

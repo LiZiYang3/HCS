@@ -1,5 +1,7 @@
 package com.ruoyi.place.service.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,4 +93,27 @@ public class CoderesultServiceImpl implements ICoderesultService
     {
         return coderesultMapper.deleteCoderesultByNo(no);
     }
+    //统计
+    @Override
+    public List<Integer> getMonthlyPlaceScanRecordIncrement() {
+        int len = 12;
+        List<Integer> list = new ArrayList<Integer>(len);
+        for (int i = 0; i < len; i++) {
+            list.add(0);
+        }
+
+        Calendar ca = Calendar.getInstance();
+        List<Coderesult> placeScanRecord= coderesultMapper.selectCoderesultList(new Coderesult());
+        for (Coderesult item : placeScanRecord) {
+            if ( !"".equals(item.getPid() )) {
+                ca.setTime(item.getTime());
+                int idx = ca.get(Calendar.MONTH);
+                int cur = list.get(idx);
+                list.set(idx, 1 + cur);
+            }
+        }
+
+        return list;
+    }
+
 }

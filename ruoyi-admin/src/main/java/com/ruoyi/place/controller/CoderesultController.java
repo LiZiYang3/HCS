@@ -124,4 +124,24 @@ public class CoderesultController extends BaseController
     {
         return toAjax(coderesultService.deleteCoderesultByNos(ids));
     }
+
+    /**
+     * 统计场所码扫描情况
+     */
+    @RequiresPermissions("place:coderesult:eCharts")
+    @GetMapping("/eCharts")
+    public String statistics(ModelMap mmap)
+    {
+        return prefix + "/eCharts";
+    }
+
+    @RequiresPermissions("place:coderesult:eCharts")
+    @Log(title = "场所码扫描情况统计", businessType = BusinessType.INSERT)
+    @PostMapping("/eCharts")
+    @ResponseBody
+    public List<Integer> statisticsData()
+    {
+        List<Integer> list = coderesultService.getMonthlyPlaceScanRecordIncrement();
+        return list;
+    }
 }

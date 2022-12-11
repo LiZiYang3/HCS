@@ -1,6 +1,10 @@
 package com.ruoyi.user.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.user.mapper.CitizenMapper;
@@ -90,5 +94,40 @@ public class CitizenServiceImpl implements ICitizenService
     public int deleteCitizenByNo(Long no)
     {
         return citizenMapper.deleteCitizenByNo(no);
+    }
+
+    //统计
+    @Override
+    public ArrayList<Map<String, String>> getCitizenCodeColor() {
+        ArrayList<Map<String,String>> list = new ArrayList<>();
+        Integer green_count_0 = 0;
+        Integer yellow_count_1 = 0;
+        Integer red_count_2 = 0;
+
+
+        List<Citizen> citizens = citizenMapper.selectCitizenList(new Citizen());
+        for (Citizen user : citizens) {
+            if ( "0".equals(user.getHealthCode()) ) {
+                green_count_0 = green_count_0 + 1;
+            }else if("1".equals(user.getHealthCode())){
+                yellow_count_1 = yellow_count_1 + 1;
+            }else{
+                red_count_2 = red_count_2 + 1;
+            }
+        }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("name","绿");
+        map.put("value",green_count_0.toString());
+        list.add(map);
+        HashMap<String, String> map1 = new HashMap<>();
+        map1.put("name","黄");
+        map1.put("value",yellow_count_1.toString());
+        list.add(map1);
+        HashMap<String, String> map2 = new HashMap<>();
+        map2.put("name","红");
+        map2.put("value",red_count_2.toString());
+        list.add(map2);
+
+        return list;
     }
 }

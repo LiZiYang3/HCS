@@ -1,6 +1,9 @@
 package com.ruoyi.place.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.place.domain.Place;
 
 /**
@@ -58,4 +61,6 @@ public interface IPlaceService
      * @return 结果
      */
     public int deletePlaceByNo(Long no);
+
+    public ArrayList<Map<String, String>> getPlaceRisk();
 }

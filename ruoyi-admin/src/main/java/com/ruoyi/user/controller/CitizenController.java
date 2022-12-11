@@ -1,6 +1,9 @@
 package com.ruoyi.user.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -124,4 +127,25 @@ public class CitizenController extends BaseController
     {
         return toAjax(citizenService.deleteCitizenByNos(ids));
     }
+
+    /**
+     * 统计市民健康码
+     */
+    @RequiresPermissions("user:citizen:eCharts")
+    @GetMapping("/eCharts")
+    public String statistics(ModelMap mmap)
+    {
+        return prefix + "/eCharts";
+    }
+    //
+    @RequiresPermissions("user:citizen:eCharts")
+    @Log(title = "市民健康码统计", businessType = BusinessType.INSERT)
+    @PostMapping("/eCharts")
+    @ResponseBody
+    public ArrayList<Map<String, String>> statisticsData()
+    {
+        ArrayList<Map<String, String>> list = citizenService.getCitizenCodeColor();
+        return list;
+    }
 }
+

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>百度ECharts</title>
+    <link href="/css/bootstrap.min.css?v=3.3.7" rel="stylesheet"/>
+    <link href="/css/font-awesome.min.css?v=4.7.0" rel="stylesheet"/>
+    <!-- bootstrap-table 表格插件样式 -->
+    <link href="/ajax/libs/bootstrap-table/bootstrap-table.min.css?v=1.18.3" rel="stylesheet"/>
+    <link href="/css/animate.min.css?v=20210831" rel="stylesheet"/>
+    <link href="/css/style.min.css?v=20210831" rel="stylesheet"/>
+    <link href="/ruoyi/css/ry-ui.css?v=4.7.5" rel="stylesheet"/>
+
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>饼状图</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">选项1</a>
+                            </li>
+                            <li><a href="#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-pie-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script> var ctx = "\/"; var lockscreen = null; if(lockscreen){window.top.location=ctx+"lockscreen";} </script>
+<a id="scroll-up" href="#" class="btn btn-sm display"><i class="fa fa-angle-double-up"></i></a>
+<script src="/js/jquery.min.js?v=3.6.1"></script>
+<script src="/js/bootstrap.min.js?v=3.3.7"></script>
+<!-- bootstrap-table 表格插件 -->
+<script src="/ajax/libs/bootstrap-table/bootstrap-table.min.js?v=1.18.3"></script>
+<script src="/ajax/libs/bootstrap-table/locale/bootstrap-table-zh-CN.min.js?v=1.18.3"></script>
+<script src="/ajax/libs/bootstrap-table/extensions/mobile/bootstrap-table-mobile.js?v=1.18.3"></script>
+<!-- jquery-validate 表单验证插件 -->
+<script src="/ajax/libs/validate/jquery.validate.min.js?v=1.19.3"></script>
+<script src="/ajax/libs/validate/jquery.validate.extend.js?v=1.19.3"></script>
+<script src="/ajax/libs/validate/messages_zh.js?v=1.19.3"></script>
+<!-- bootstrap-table 表格树插件 -->
+<script src="/ajax/libs/bootstrap-table/extensions/tree/bootstrap-table-tree.min.js?v=1.18.3"></script>
+<!-- 遮罩层 -->
+<script src="/ajax/libs/blockUI/jquery.blockUI.js?v=2.70.0"></script>
+<script src="/ajax/libs/iCheck/icheck.min.js?v=1.0.3"></script>
+<script src="/ajax/libs/layer/layer.min.js?v=3.5.1"></script>
+<script src="/ajax/libs/layui/layui.min.js?v=2.7.5"></script>
+<script src="/ruoyi/js/common.js?v=4.7.5"></script>
+<script src="/ruoyi/js/ry-ui.js?v=4.7.5"></script>
+
+
+<script src="/ajax/libs/report/echarts/echarts-all.min.js?v=4.2.1"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var placeriskcount = [
+            {value:335, name:'低'},
+            {value:335, name:'高'}
+        ];
+        $.ajax({
+            type: 'post',
+            url: 'eCharts',
+            async: false,
+            dataType: 'json',
+            success: function(res) {
+                placeriskcount = res;
+                console.log("================================="+res);
+            }
+        });
+        var pieChart = echarts.init(document.getElementById("echarts-pie-chart"));
+        var pieoption = {
+            title : {
+                text: '场所风险等级统计',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data:['低','高']
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'场所风险等级',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:placeriskcount
+                }
+            ]
+        };
+        pieChart.setOption(pieoption);
+        $(window).resize(pieChart.resize);
+
+    });
+</script>
+</body>
+</html>

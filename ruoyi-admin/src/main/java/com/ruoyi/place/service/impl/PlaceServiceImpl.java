@@ -1,6 +1,11 @@
 package com.ruoyi.place.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.ruoyi.user.domain.Citizen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.place.mapper.PlaceMapper;
@@ -90,5 +95,33 @@ public class PlaceServiceImpl implements IPlaceService
     public int deletePlaceByNo(Long no)
     {
         return placeMapper.deletePlaceByNo(no);
+    }
+
+    //统计
+    @Override
+    public ArrayList<Map<String, String>> getPlaceRisk() {
+        ArrayList<Map<String,String>> list = new ArrayList<>();
+        Integer low_count_0 = 0;
+        Integer high_count_1 = 0;
+
+
+        List<Place> places = placeMapper.selectPlaceList(new Place());
+        for (Place item : places) {
+            if ( "0".equals(item.getRiskGrade()) ) {
+                low_count_0 = low_count_0 + 1;
+            }else{
+                high_count_1 = high_count_1 + 1;
+            }
+        }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("name","低");
+        map.put("value",low_count_0.toString());
+        list.add(map);
+        HashMap<String, String> map1 = new HashMap<>();
+        map1.put("name","高");
+        map1.put("value",high_count_1.toString());
+        list.add(map1);
+
+        return list;
     }
 }

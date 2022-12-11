@@ -55,6 +55,9 @@
                 <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="user:citizen:export">
                     <i class="fa fa-download"></i> 导出
                 </a>
+                <a class="btn btn-warning" onclick="$.modal.openTab('市民健康码统计', '/user/citizen/eCharts');" shiro:hasPermission="user:citizen:eCharts">
+                    <i class="fa fa-plus"></i> 统计
+                </a>
             </div>
             <div class="col-sm-12 select-table table-striped">
                 <table id="bootstrap-table"></table>

@@ -1,6 +1,9 @@
 package com.ruoyi.place.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -123,5 +126,25 @@ public class PlaceController extends BaseController
     public AjaxResult remove(String ids)
     {
         return toAjax(placeService.deletePlaceByNos(ids));
+    }
+
+    /**
+     * 统计场所风险等级
+     */
+    @RequiresPermissions("place:placecode:eCharts")
+    @GetMapping("/eCharts")
+    public String statistics(ModelMap mmap)
+    {
+        return prefix + "/eCharts";
+    }
+    //
+    @RequiresPermissions("place:placecode:eCharts")
+    @Log(title = "场所风险等级统计", businessType = BusinessType.INSERT)
+    @PostMapping("/eCharts")
+    @ResponseBody
+    public ArrayList<Map<String, String>> statisticsData()
+    {
+        ArrayList<Map<String, String>> list = placeService.getPlaceRisk();
+        return list;
     }
 }

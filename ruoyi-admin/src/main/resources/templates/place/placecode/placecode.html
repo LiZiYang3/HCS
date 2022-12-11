@@ -52,6 +52,9 @@
                 <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="place:placecode:export">
                     <i class="fa fa-download"></i> 导出
                 </a>
+                <a class="btn btn-warning" onclick="$.modal.openTab('场所风险等级统计', '/place/placecode/eCharts');" shiro:hasPermission="place:placecode:eCharts">
+                    <i class="fa fa-plus"></i> 统计
+                </a>
             </div>
             <div class="col-sm-12 select-table table-striped">
                 <table id="bootstrap-table"></table>
@@ -62,6 +65,7 @@
     <script th:inline="javascript">
         var editFlag = [[${@permission.hasPermi('place:placecode:edit')}]];
         var removeFlag = [[${@permission.hasPermi('place:placecode:remove')}]];
+        var produceFlag = [[${@permission.hasPermi('place:placecode:produce')}]];
         var riskGradeDatas = [[${@dict.getType('place_risk_grade')}]];
         var prefix = ctx + "place/placecode";
 
@@ -111,6 +115,7 @@
                         var actions = [];
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.no + '\')"><i class="fa fa-edit"></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.no + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        actions.push('<a class="btn btn-primary single disabled btn-xs ' + produceFlag + '" href="javascript:void(0)" onclick="$.operate.produce(\'' + row.no + '\')"><i class="fa fa-produce"></i>生成场所码</a>');
                         return actions.join('');
                     }
                 }]

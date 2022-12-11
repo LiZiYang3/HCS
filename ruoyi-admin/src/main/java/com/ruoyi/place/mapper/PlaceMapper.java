@@ -1,6 +1,9 @@
 package com.ruoyi.place.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.place.domain.Place;
 
 /**
@@ -58,4 +61,6 @@ public interface PlaceMapper
      * @return 结果
      */
     public int deletePlaceByNos(String[] nos);
+
+
 }
