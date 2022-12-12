@@ -36,7 +36,13 @@
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
-        
+            <!-- 场所码生成-->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>3.2.1</version>
+            </dependency>
+
             <!-- SpringBoot的依赖配置-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

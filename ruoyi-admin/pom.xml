@@ -68,6 +68,14 @@
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
 
+        <!-- 场所码生成-->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
