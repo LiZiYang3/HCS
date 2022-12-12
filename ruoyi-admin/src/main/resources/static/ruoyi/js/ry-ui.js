@@ -1090,21 +1090,21 @@ var table = {
                 }
                 return url;
             },
-            // 生成二维码
-            produce: function(id) {
-                table.set();
-                if ($.common.isEmpty(id) && table.options.type == table_type.bootstrapTreeTable) {
-                    var row = $("#" + table.options.id).bootstrapTreeTable('getSelections')[0];
-                    if ($.common.isEmpty(row)) {
-                        $.modal.alertWarning("请至少选择一处场所");
-                        return;
-                    }
-                    var url = table.options.updateUrl.replace("{id}", row[table.options.uniqueId]);
-                    $.modal.open("修改" + table.options.modalName, url);
-                } else {
-                    $.modal.open("修改" + table.options.modalName, $.operate.editUrl(id));
-                }
-            },
+            // // 生成二维码
+            // produce: function(id) {
+            //     table.set();
+            //     if ($.common.isEmpty(id) && table.options.type == table_type.bootstrapTreeTable) {
+            //         var row = $("#" + table.options.id).bootstrapTreeTable('getSelections')[0];
+            //         if ($.common.isEmpty(row)) {
+            //             $.modal.alertWarning("请至少选择一处场所");
+            //             return;
+            //         }
+            //         var url = table.options.updateUrl.replace("{id}", row[table.options.uniqueId]);
+            //         $.modal.open("修改" + table.options.modalName, url);
+            //     } else {
+            //         $.modal.open("修改" + table.options.modalName, $.operate.editUrl(id));
+            //     }
+            // },
             // 删除信息
             remove: function(id) {
                 table.set();

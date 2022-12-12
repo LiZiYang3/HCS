@@ -22,14 +22,14 @@
                                 <label>风险等级：</label>
                                 <input type="text" name="riskGrade"/>
                             </li>
-                            <li>
-                                <label>场所码URL：</label>
-                                <input type="text" name="placeCodeURL"/>
-                            </li>
-                            <li>
-                                <label>扫码人数：</label>
-                                <input type="text" name="personNumber"/>
-                            </li>
+<!--                            <li>-->
+<!--                                <label>场所码URL：</label>-->
+<!--                                <input type="text" name="placeCodeURL"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <label>扫码人数：</label>-->
+<!--                                <input type="text" name="personNumber"/>-->
+<!--                            </li>-->
                             <li>
                                 <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
                                 <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -55,6 +55,9 @@
                 <a class="btn btn-warning" onclick="$.modal.openTab('场所风险等级统计', '/place/placecode/eCharts');" shiro:hasPermission="place:placecode:eCharts">
                     <i class="fa fa-plus"></i> 统计
                 </a>
+                <a class="btn btn-warning" onclick="$.modal.openTab('场所码生成', '/place/placecode/qrCode');" shiro:hasPermission="place:placecode:produceCode">
+                    <i class="fa fa-edit"></i> 场所码生成
+                </a>
             </div>
             <div class="col-sm-12 select-table table-striped">
                 <table id="bootstrap-table"></table>
@@ -65,7 +68,7 @@
     <script th:inline="javascript">
         var editFlag = [[${@permission.hasPermi('place:placecode:edit')}]];
         var removeFlag = [[${@permission.hasPermi('place:placecode:remove')}]];
-        var produceFlag = [[${@permission.hasPermi('place:placecode:produce')}]];
+        // var produceFlag = [[${@permission.hasPermi('place:placecode:produce')}]];
         var riskGradeDatas = [[${@dict.getType('place_risk_grade')}]];
         var prefix = ctx + "place/placecode";
 
@@ -100,14 +103,14 @@
                        return $.table.selectDictLabel(riskGradeDatas, value);
                     }
                 },
-                {
-                    field: 'placeCodeURL',
-                    title: '场所码URL'
-                },
-                {
-                    field: 'personNumber',
-                    title: '扫码人数'
-                },
+                // {
+                //     field: 'placeCodeURL',
+                //     title: '场所码URL'
+                // },
+                // {
+                //     field: 'personNumber',
+                //     title: '扫码人数'
+                // },
                 {
                     title: '操作',
                     align: 'center',
@@ -115,7 +118,7 @@
                         var actions = [];
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.no + '\')"><i class="fa fa-edit"></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.no + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        actions.push('<a class="btn btn-primary single disabled btn-xs ' + produceFlag + '" href="javascript:void(0)" onclick="$.operate.produce(\'' + row.no + '\')"><i class="fa fa-produce"></i>生成场所码</a>');
+                        // actions.push('<a class="btn btn-primary single disabled btn-xs ' + produceFlag + '" href="javascript:void(0)" onclick="$.operate.produce(\'' + row.no + '\')"><i class="fa fa-produce"></i>生成场所码</a>');
                         return actions.join('');
                     }
                 }]

@@ -147,4 +147,63 @@ public class PlaceController extends BaseController
         ArrayList<Map<String, String>> list = placeService.getPlaceRisk();
         return list;
     }
+
+
+    /**
+     * 生成场所码
+     */
+    @GetMapping("/qrCode")
+    public String qrCode()
+    {
+        return prefix + "/qrCode";
+    }
+//
+//    /**
+//     * 生成二维码
+//     * */
+//    @ApiOperation(value = "生成二维码", notes = "")
+//    @PostMapping(value = "/qrCode")
+//    public AjaxResult qrCode(){
+//        try {
+//            //若依系统封装的Config  不是若依使用  getProfile() + "/upload"
+//            String filePath = RuoYiConfig.getUploadPath();
+//            //查询数据库获取最新的apk的信息     根据自己需要调用数据里的数据
+//            SysAppVersions newVersion = iSysAppVersionsService.getNewVersionId();
+//            if (newVersion.getId()==null)
+//                throw new CustomException("没有apk！");
+//            //设置二维码图片名称，如果没有DateTool工具类也可以直接使用时间戳 System.currentTimeMillis()
+//            String imgName = String.valueOf(newVersion.getId() + DateTool.currentTimestamp());
+//            //设置二维码存储路径
+//            String path = filePath + "/QRCode/" + imgName + ".png";
+//            //本地测试IP+APK存储路径
+//            String filename = "http://192.168.10.11:8086"+newVersion.getVersionsSite();
+//            //真实使用IP
+////            String filename = "https://***"+newVersion.getVersionsSite();
+//            //保存二维码地址   profile若依系统映射文件路径方式
+//            newVersion.setVersionsQrcode("/profile/upload/QRCode/" + imgName + ".png");
+//            //将生成的二维码地址存入数据库   根据自己需求判断是否需要存储地址
+//            //iSysAppVersionsService.updateVersionsQRcodeById(newVersion.getId(),newVersion.getVersionsQrcode());
+//            img(filename, path);
+//            return AjaxResult.success("生成二维码成功！");
+//        }catch (Exception e){
+//            return AjaxResult.error(e.getMessage());
+//        }
+//    }
+//
+//    private void img(String filename, String path) {
+//        try {
+//            //创建文件夹   如果没有工具类，则使用
+//            //File file = new File(path);
+//            //if (!file.exists()) {
+//            //    file.mkdirs();
+//            //}
+//            FileUploadUtils.addFolder(path);
+//            //生成二维码
+//            ImageBuilderUtils.generateQRCodeImage(filename, path);
+//        } catch (WriterException e) {
+//            throw new CustomException("WriterException 生成二维码失败，请稍后再试！");
+//        } catch (IOException e) {
+//            throw new CustomException("IOException 生成二维码失败，请稍后再试！");
+//        }
+//    }
 }

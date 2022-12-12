@@ -50,7 +50,7 @@ public class CaptchaValidateFilter extends AccessControlFilter
     {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         // 验证码禁用 或不是表单提交 允许访问
-        if (captchaEnabled == false || !"post".equals(httpServletRequest.getMethod().toLowerCase()))
+        if (captchaEnabled == true || !"post".equals(httpServletRequest.getMethod().toLowerCase()))
         {
             return true;
         }
