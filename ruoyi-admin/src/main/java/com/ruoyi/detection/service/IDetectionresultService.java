@@ -1,13 +1,16 @@
 package com.ruoyi.detection.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.detection.domain.Detectionresult;
 
 /**
  * 检测结果Service接口
  * 
  * @author lzy
- * @date 2022-12-04
+ * @date 2022-12-13
  */
 public interface IDetectionresultService 
 {
@@ -58,4 +61,8 @@ public interface IDetectionresultService
      * @return 结果
      */
     public int deleteDetectionresultByNo(Long no);
+
+    public ArrayList<Map<String, String>> getDetectionResult();
+    public List<Integer> getMonthlyDetectionResult();
+
 }

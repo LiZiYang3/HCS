@@ -7,7 +7,7 @@ import com.ruoyi.detection.domain.Detectionresult;
  * 检测结果Mapper接口
  * 
  * @author lzy
- * @date 2022-12-04
+ * @date 2022-12-13
  */
 public interface DetectionresultMapper 
 {

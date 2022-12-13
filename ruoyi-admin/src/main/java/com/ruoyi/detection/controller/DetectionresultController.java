@@ -1,6 +1,9 @@
 package com.ruoyi.detection.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +26,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 检测结果Controller
  * 
  * @author lzy
- * @date 2022-12-04
+ * @date 2022-12-13
  */
 @Controller
 @RequestMapping("/detection/detectionresult")
@@ -123,5 +126,46 @@ public class DetectionresultController extends BaseController
     public AjaxResult remove(String ids)
     {
         return toAjax(detectionresultService.deleteDetectionresultByNos(ids));
+    }
+
+    /**
+     * 统计核酸检测结果
+     */
+    @RequiresPermissions("detection:detectionresult:eCharts")
+    @GetMapping("/eCharts")
+    public String statistics(ModelMap mmap)
+    {
+        return prefix + "/eCharts";
+    }
+
+
+    //
+    @RequiresPermissions("place:placecode:eCharts")
+    @PostMapping("/eCharts")
+    @ResponseBody
+    public ArrayList<Map<String, String>> statisticsData()
+    {
+        return detectionresultService.getDetectionResult();
+    }
+
+    /**
+     * 统计核酸检测月份分布
+     */
+    @RequiresPermissions("detection:detectionresult:eCharts1")
+    @GetMapping("/eCharts1")
+    public String statistics1(ModelMap mmap)
+    {
+        return prefix + "/eCharts1";
+    }
+
+
+    //
+    @RequiresPermissions("place:placecode:eCharts1")
+    @Log(title = "检测结果统计", businessType = BusinessType.INSERT)
+    @PostMapping("/eCharts1")
+    @ResponseBody
+    public List<Integer> statisticsData1()
+    {
+        return detectionresultService.getMonthlyDetectionResult();
     }
 }

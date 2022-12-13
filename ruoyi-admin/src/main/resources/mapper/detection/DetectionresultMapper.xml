@@ -6,21 +6,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="Detectionresult" id="DetectionresultResult">
         <result property="no"    column="no"    />
-        <result property="tid"    column="tid"    />
         <result property="id"    column="id"    />
+        <result property="sid"    column="sid"    />
         <result property="result"    column="result"    />
         <result property="time"    column="time"    />
     </resultMap>
 
     <sql id="selectDetectionresultVo">
-        select no, tid, id, result, time from detectionresult
+        select no, id, sid, result, time from detectionresult
     </sql>
 
     <select id="selectDetectionresultList" parameterType="Detectionresult" resultMap="DetectionresultResult">
         <include refid="selectDetectionresultVo"/>
         <where>  
-            <if test="tid != null  and tid != ''"> and tid = #{tid}</if>
             <if test="id != null  and id != ''"> and id = #{id}</if>
+            <if test="sid != null  and sid != ''"> and sid = #{sid}</if>
             <if test="result != null  and result != ''"> and result = #{result}</if>
             <if test="time != null "> and time = #{time}</if>
         </where>
@@ -34,14 +34,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="insertDetectionresult" parameterType="Detectionresult" useGeneratedKeys="true" keyProperty="no">
         insert into detectionresult
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="tid != null and tid != ''">tid,</if>
             <if test="id != null and id != ''">id,</if>
+            <if test="sid != null">sid,</if>
             <if test="result != null and result != ''">result,</if>
             <if test="time != null">time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="tid != null and tid != ''">#{tid},</if>
             <if test="id != null and id != ''">#{id},</if>
+            <if test="sid != null">#{sid},</if>
             <if test="result != null and result != ''">#{result},</if>
             <if test="time != null">#{time},</if>
          </trim>
@@ -50,8 +50,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateDetectionresult" parameterType="Detectionresult">
         update detectionresult
         <trim prefix="SET" suffixOverrides=",">
-            <if test="tid != null and tid != ''">tid = #{tid},</if>
             <if test="id != null and id != ''">id = #{id},</if>
+            <if test="sid != null">sid = #{sid},</if>
             <if test="result != null and result != ''">result = #{result},</if>
             <if test="time != null">time = #{time},</if>
         </trim>

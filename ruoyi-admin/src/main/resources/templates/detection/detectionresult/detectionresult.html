@@ -11,15 +11,15 @@
                     <div class="select-list">
                         <ul>
                             <li>
-                                <label>试管编号：</label>
-                                <input type="text" name="tid"/>
-                            </li>
-                            <li>
-                                <label>市民身份证号：</label>
+                                <label>市民身份证ID：</label>
                                 <input type="text" name="id"/>
                             </li>
                             <li>
-                                <label>检测结果：</label>
+                                <label>检测人员ID：</label>
+                                <input type="text" name="sid"/>
+                            </li>
+                            <li>
+                                <label>核酸检测结果：</label>
                                 <select name="result" th:with="type=${@dict.getType('detection_result')}">
                                     <option value="">所有</option>
                                     <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
@@ -51,6 +51,12 @@
                 <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="detection:detectionresult:export">
                     <i class="fa fa-download"></i> 导出
                 </a>
+                <a class="btn btn-info" onclick="$.modal.openTab('核酸检测结果统计', '/detection/detectionresult/eCharts');" shiro:hasPermission="place:placecode:eCharts">
+                    <i class="fa fa-bar-chart-o"></i> 统计阴性阳性
+                </a>
+                <a class="btn btn-info" onclick="$.modal.openTab('核酸检测结果统计', '/detection/detectionresult/eCharts1');" shiro:hasPermission="place:placecode:eCharts1">
+                    <i class="fa fa-calendar"></i> 统计每月核酸检测数量
+                </a>
             </div>
             <div class="col-sm-12 select-table table-striped">
                 <table id="bootstrap-table"></table>
@@ -81,16 +87,16 @@
                     visible: false
                 },
                 {
-                    field: 'tid',
-                    title: '试管编号'
+                    field: 'id',
+                    title: '市民身份证ID'
                 },
                 {
-                    field: 'id',
-                    title: '市民身份证号'
+                    field: 'sid',
+                    title: '检测人员ID'
                 },
                 {
                     field: 'result',
-                    title: '检测结果',
+                    title: '核酸检测结果',
                     formatter: function(value, row, index) {
                        return $.table.selectDictLabel(resultDatas, value);
                     }

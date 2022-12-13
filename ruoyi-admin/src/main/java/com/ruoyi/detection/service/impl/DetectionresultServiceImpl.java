@@ -1,6 +1,7 @@
 package com.ruoyi.detection.service.impl;
 
-import java.util.List;
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.detection.mapper.DetectionresultMapper;
@@ -12,7 +13,7 @@ import com.ruoyi.common.core.text.Convert;
  * 检测结果Service业务层处理
  * 
  * @author lzy
- * @date 2022-12-04
+ * @date 2022-12-13
  */
 @Service
 public class DetectionresultServiceImpl implements IDetectionresultService 
@@ -90,5 +91,51 @@ public class DetectionresultServiceImpl implements IDetectionresultService
     public int deleteDetectionresultByNo(Long no)
     {
         return detectionresultMapper.deleteDetectionresultByNo(no);
+    }
+
+    //统计
+    @Override
+    public ArrayList<Map<String, String>> getDetectionResult() {
+        ArrayList<Map<String,String>> list = new ArrayList<>();
+        Integer yin_count_0 = 0;
+        Integer yang_count_1 = 0;
+        List<Detectionresult> detectionresults = detectionresultMapper.selectDetectionresultList(new Detectionresult());
+        for (Detectionresult item : detectionresults) {
+            if ( "0".equals(item.getResult()) ) {
+                yin_count_0 += 1;
+            }else{
+                yang_count_1 += 1;
+            }
+        }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("name","阴性");
+        map.put("value",yin_count_0.toString());
+        list.add(map);
+        HashMap<String, String> map1 = new HashMap<>();
+        map1.put("name","阳性");
+        map1.put("value",yang_count_1.toString());
+        list.add(map1);
+        return list;
+    }
+
+    //统计
+    @Override
+    public List<Integer> getMonthlyDetectionResult() {
+        int len = 12;
+        List<Integer> list = new ArrayList<Integer>(len);
+        for (int i = 0; i < len; i++) {
+            list.add(0);
+        }
+        Calendar ca = Calendar.getInstance();
+        List<Detectionresult> detectionresults = detectionresultMapper.selectDetectionresultList(new Detectionresult());
+        for (Detectionresult item:detectionresults) {
+            if ( !"".equals(item.getId())) {
+                ca.setTime(item.getTime());
+                int idx = ca.get(Calendar.MONTH);
+                int cur = list.get(idx);
+                list.set(idx, 1 + cur);
+            }
+        }
+        return list;
     }
 }

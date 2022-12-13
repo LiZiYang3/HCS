@@ -11,7 +11,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 检测结果对象 detectionresult
  * 
  * @author lzy
- * @date 2022-12-04
+ * @date 2022-12-13
  */
 public class Detectionresult extends BaseEntity
 {
@@ -20,16 +20,16 @@ public class Detectionresult extends BaseEntity
     /**  */
     private Long no;
 
-    /** 试管编号 */
-    @Excel(name = "试管编号")
-    private String tid;
-
-    /** 市民身份证号 */
-    @Excel(name = "市民身份证号")
+    /** 市民身份证ID */
+    @Excel(name = "市民身份证ID")
     private String id;
 
-    /** 检测结果 */
-    @Excel(name = "检测结果")
+    /** 检测人员ID */
+    @Excel(name = "检测人员ID")
+    private String sid;
+
+    /** 核酸检测结果 */
+    @Excel(name = "核酸检测结果")
     private String result;
 
     /** 检测时间 */
@@ -46,15 +46,6 @@ public class Detectionresult extends BaseEntity
     {
         return no;
     }
-    public void setTid(String tid) 
-    {
-        this.tid = tid;
-    }
-
-    public String getTid() 
-    {
-        return tid;
-    }
     public void setId(String id) 
     {
         this.id = id;
@@ -63,6 +54,15 @@ public class Detectionresult extends BaseEntity
     public String getId() 
     {
         return id;
+    }
+    public void setSid(String sid) 
+    {
+        this.sid = sid;
+    }
+
+    public String getSid() 
+    {
+        return sid;
     }
     public void setResult(String result) 
     {
@@ -87,8 +87,8 @@ public class Detectionresult extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("no", getNo())
-            .append("tid", getTid())
             .append("id", getId())
+            .append("sid", getSid())
             .append("result", getResult())
             .append("time", getTime())
             .toString();
