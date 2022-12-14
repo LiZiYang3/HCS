@@ -87,6 +87,7 @@ public class DetectionresultController extends BaseController
     @Log(title = "检测结果", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
+    //Detectionresult(id,sid,time,rusult);
     public AjaxResult addSave(Detectionresult detectionresult)
     {
         return toAjax(detectionresultService.insertDetectionresult(detectionresult));
