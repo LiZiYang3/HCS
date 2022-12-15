@@ -37,7 +37,6 @@ public class DetectionresultController extends BaseController
     @Autowired
     private IDetectionresultService detectionresultService;
 
-    @RequiresPermissions("detection:detectionresult:view")
     @GetMapping()
     public String detectionresult()
     {
@@ -47,8 +46,8 @@ public class DetectionresultController extends BaseController
     /**
      * 查询检测结果列表
      */
-    @RequiresPermissions("detection:detectionresult:list")
-    @PostMapping("/list")
+
+    @RequestMapping("/list")
     @ResponseBody
     public TableDataInfo list(Detectionresult detectionresult)
     {
@@ -60,7 +59,7 @@ public class DetectionresultController extends BaseController
     /**
      * 导出检测结果列表
      */
-    @RequiresPermissions("detection:detectionresult:export")
+
     @Log(title = "检测结果", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -83,7 +82,7 @@ public class DetectionresultController extends BaseController
     /**
      * 新增保存检测结果
      */
-    @RequiresPermissions("detection:detectionresult:add")
+
     @Log(title = "检测结果", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -96,7 +95,7 @@ public class DetectionresultController extends BaseController
     /**
      * 修改检测结果
      */
-    @RequiresPermissions("detection:detectionresult:edit")
+
     @GetMapping("/edit/{no}")
     public String edit(@PathVariable("no") Long no, ModelMap mmap)
     {
@@ -108,7 +107,7 @@ public class DetectionresultController extends BaseController
     /**
      * 修改保存检测结果
      */
-    @RequiresPermissions("detection:detectionresult:edit")
+
     @Log(title = "检测结果", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -120,7 +119,7 @@ public class DetectionresultController extends BaseController
     /**
      * 删除检测结果
      */
-    @RequiresPermissions("detection:detectionresult:remove")
+
     @Log(title = "检测结果", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
@@ -132,7 +131,7 @@ public class DetectionresultController extends BaseController
     /**
      * 统计核酸检测结果
      */
-    @RequiresPermissions("detection:detectionresult:eCharts")
+
     @GetMapping("/eCharts")
     public String statistics(ModelMap mmap)
     {
@@ -141,7 +140,7 @@ public class DetectionresultController extends BaseController
 
 
     //
-    @RequiresPermissions("place:placecode:eCharts")
+
     @PostMapping("/eCharts")
     @ResponseBody
     public ArrayList<Map<String, String>> statisticsData()
@@ -152,7 +151,7 @@ public class DetectionresultController extends BaseController
     /**
      * 统计核酸检测月份分布
      */
-    @RequiresPermissions("detection:detectionresult:eCharts1")
+
     @GetMapping("/eCharts1")
     public String statistics1(ModelMap mmap)
     {
@@ -161,7 +160,7 @@ public class DetectionresultController extends BaseController
 
 
     //
-    @RequiresPermissions("place:placecode:eCharts1")
+
     @Log(title = "检测结果统计", businessType = BusinessType.INSERT)
     @PostMapping("/eCharts1")
     @ResponseBody

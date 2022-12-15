@@ -288,17 +288,17 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/ruoyi/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
+        filterChainDefinitionMap.put("/user/staff/**", "anon");
+        filterChainDefinitionMap.put("/user/citizen/**", "anon");
+        filterChainDefinitionMap.put("/place/placecode/**", "anon");
+        filterChainDefinitionMap.put("/place/coderesult/**", "anon");
+        filterChainDefinitionMap.put("/detection/detectionresult/**", "anon");
         // 退出 logout地址，shiro去清除session
         filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
         filterChainDefinitionMap.put("/login", "anon,captchaValidate");
         // 注册相关
         filterChainDefinitionMap.put("/register", "anon,captchaValidate");
-        filterChainDefinitionMap.put("/user/staff/**", "anon,captchaValidate");
-        filterChainDefinitionMap.put("/user/citizen/**", "anon,captchaValidate");
-        filterChainDefinitionMap.put("/place/placecode/**", "anon,captchaValidate");
-        filterChainDefinitionMap.put("/place/coderesult/**", "anon,captchaValidate");
-        filterChainDefinitionMap.put("/detection/detectionresult/**", "anon,captchaValidate");
         // 系统权限列表
         // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 

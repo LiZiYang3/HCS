@@ -37,7 +37,7 @@ public class CitizenController extends BaseController
     @Autowired
     private ICitizenService citizenService;
 
-    @RequiresPermissions("user:citizen:view")
+
     @GetMapping()
     public String citizen()
     {
@@ -47,8 +47,8 @@ public class CitizenController extends BaseController
     /**
      * 查询市民信息列表
      */
-    @RequiresPermissions("user:citizen:list")
-    @PostMapping("/list")
+
+    @RequestMapping("/list")
     @ResponseBody
     public TableDataInfo list(Citizen citizen)
     {
@@ -60,7 +60,7 @@ public class CitizenController extends BaseController
     /**
      * 导出市民信息列表
      */
-    @RequiresPermissions("user:citizen:export")
+
     @Log(title = "市民信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -83,7 +83,7 @@ public class CitizenController extends BaseController
     /**
      * 新增保存市民信息
      */
-    @RequiresPermissions("user:citizen:add")
+
     @Log(title = "市民信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -95,7 +95,7 @@ public class CitizenController extends BaseController
     /**
      * 修改市民信息
      */
-    @RequiresPermissions("user:citizen:edit")
+
     @GetMapping("/edit/{no}")
     public String edit(@PathVariable("no") Long no, ModelMap mmap)
     {
@@ -107,7 +107,7 @@ public class CitizenController extends BaseController
     /**
      * 修改保存市民信息
      */
-    @RequiresPermissions("user:citizen:edit")
+
     @Log(title = "市民信息", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -119,7 +119,7 @@ public class CitizenController extends BaseController
     /**
      * 删除市民信息
      */
-    @RequiresPermissions("user:citizen:remove")
+
     @Log(title = "市民信息", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
@@ -131,14 +131,14 @@ public class CitizenController extends BaseController
     /**
      * 统计市民健康码
      */
-    @RequiresPermissions("user:citizen:eCharts")
+
     @GetMapping("/eCharts")
     public String statistics(ModelMap mmap)
     {
         return prefix + "/eCharts";
     }
     //
-    @RequiresPermissions("user:citizen:eCharts")
+
     @Log(title = "市民健康码统计", businessType = BusinessType.INSERT)
     @PostMapping("/eCharts")
     @ResponseBody

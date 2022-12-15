@@ -37,7 +37,7 @@ public class PlaceController extends BaseController
     @Autowired
     private IPlaceService placeService;
 
-    @RequiresPermissions("place:placecode:view")
+
     @GetMapping()
     public String placecode()
     {
@@ -47,8 +47,8 @@ public class PlaceController extends BaseController
     /**
      * 查询场所码信息列表
      */
-    @RequiresPermissions("place:placecode:list")
-    @PostMapping("/list")
+
+    @RequestMapping("/list")
     @ResponseBody
     public TableDataInfo list(Place place)
     {
@@ -60,7 +60,7 @@ public class PlaceController extends BaseController
     /**
      * 导出场所码信息列表
      */
-    @RequiresPermissions("place:placecode:export")
+
     @Log(title = "场所码信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -83,7 +83,7 @@ public class PlaceController extends BaseController
     /**
      * 新增保存场所码信息
      */
-    @RequiresPermissions("place:placecode:add")
+
     @Log(title = "场所码信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -95,7 +95,7 @@ public class PlaceController extends BaseController
     /**
      * 修改场所码信息
      */
-    @RequiresPermissions("place:placecode:edit")
+
     @GetMapping("/edit/{no}")
     public String edit(@PathVariable("no") Long no, ModelMap mmap)
     {
@@ -107,7 +107,7 @@ public class PlaceController extends BaseController
     /**
      * 修改保存场所码信息
      */
-    @RequiresPermissions("place:placecode:edit")
+
     @Log(title = "场所码信息", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -119,7 +119,7 @@ public class PlaceController extends BaseController
     /**
      * 删除场所码信息
      */
-    @RequiresPermissions("place:placecode:remove")
+
     @Log(title = "场所码信息", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
@@ -131,14 +131,14 @@ public class PlaceController extends BaseController
     /**
      * 统计场所风险等级
      */
-    @RequiresPermissions("place:placecode:eCharts")
+
     @GetMapping("/eCharts")
     public String statistics(ModelMap mmap)
     {
         return prefix + "/eCharts";
     }
     //
-    @RequiresPermissions("place:placecode:eCharts")
+
     @Log(title = "场所风险等级统计", businessType = BusinessType.INSERT)
     @PostMapping("/eCharts")
     @ResponseBody

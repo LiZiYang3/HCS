@@ -34,7 +34,7 @@ public class CoderesultController extends BaseController
     @Autowired
     private ICoderesultService coderesultService;
 
-    @RequiresPermissions("place:coderesult:view")
+
     @GetMapping()
     public String coderesult()
     {
@@ -44,8 +44,8 @@ public class CoderesultController extends BaseController
     /**
      * 查询扫码记录列表
      */
-    @RequiresPermissions("place:coderesult:list")
-    @PostMapping("/list")
+
+    @RequestMapping("/list")
     @ResponseBody
     public TableDataInfo list(Coderesult coderesult)
     {
@@ -57,7 +57,7 @@ public class CoderesultController extends BaseController
     /**
      * 导出扫码记录列表
      */
-    @RequiresPermissions("place:coderesult:export")
+
     @Log(title = "扫码记录", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -80,7 +80,7 @@ public class CoderesultController extends BaseController
     /**
      * 新增保存扫码记录
      */
-    @RequiresPermissions("place:coderesult:add")
+
     @Log(title = "扫码记录", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -92,7 +92,7 @@ public class CoderesultController extends BaseController
     /**
      * 修改扫码记录
      */
-    @RequiresPermissions("place:coderesult:edit")
+
     @GetMapping("/edit/{no}")
     public String edit(@PathVariable("no") Long no, ModelMap mmap)
     {
@@ -104,7 +104,7 @@ public class CoderesultController extends BaseController
     /**
      * 修改保存扫码记录
      */
-    @RequiresPermissions("place:coderesult:edit")
+
     @Log(title = "扫码记录", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -116,7 +116,7 @@ public class CoderesultController extends BaseController
     /**
      * 删除扫码记录
      */
-    @RequiresPermissions("place:coderesult:remove")
+
     @Log(title = "扫码记录", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
@@ -128,14 +128,14 @@ public class CoderesultController extends BaseController
     /**
      * 统计场所码扫描情况
      */
-    @RequiresPermissions("place:coderesult:eCharts")
+
     @GetMapping("/eCharts")
     public String statistics(ModelMap mmap)
     {
         return prefix + "/eCharts";
     }
 
-    @RequiresPermissions("place:coderesult:eCharts")
+
     @Log(title = "场所码扫描情况统计", businessType = BusinessType.INSERT)
     @PostMapping("/eCharts")
     @ResponseBody

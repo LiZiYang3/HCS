@@ -34,7 +34,7 @@ public class StaffController extends BaseController
     @Autowired
     private IStaffService staffService;
 
-    @RequiresPermissions("user:staff:view")
+
     @GetMapping()
     public String staff()
     {
@@ -44,8 +44,8 @@ public class StaffController extends BaseController
     /**
      * 查询检测人员信息列表
      */
-    @RequiresPermissions("user:staff:list")
-    @PostMapping("/list")
+
+    @RequestMapping("/list")
     @ResponseBody
     public TableDataInfo list(Staff staff)
     {
@@ -57,7 +57,7 @@ public class StaffController extends BaseController
     /**
      * 导出检测人员信息列表
      */
-    @RequiresPermissions("user:staff:export")
+
     @Log(title = "检测人员信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -80,7 +80,7 @@ public class StaffController extends BaseController
     /**
      * 新增保存检测人员信息
      */
-    @RequiresPermissions("user:staff:add")
+
     @Log(title = "检测人员信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -92,7 +92,7 @@ public class StaffController extends BaseController
     /**
      * 修改检测人员信息
      */
-    @RequiresPermissions("user:staff:edit")
+
     @GetMapping("/edit/{no}")
     public String edit(@PathVariable("no") Long no, ModelMap mmap)
     {
@@ -104,7 +104,7 @@ public class StaffController extends BaseController
     /**
      * 修改保存检测人员信息
      */
-    @RequiresPermissions("user:staff:edit")
+
     @Log(title = "检测人员信息", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -116,9 +116,9 @@ public class StaffController extends BaseController
     /**
      * 删除检测人员信息
      */
-    @RequiresPermissions("user:staff:remove")
+
     @Log(title = "检测人员信息", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove")
+    @RequestMapping( "/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
     {
