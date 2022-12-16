@@ -1,15 +1,15 @@
 package com.ruoyi.place.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import com.ruoyi.detection.domain.Detectionresult;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.place.domain.Coderesult;
@@ -143,5 +143,30 @@ public class CoderesultController extends BaseController
     {
         List<Integer> list = coderesultService.getMonthlyPlaceScanRecordIncrement();
         return list;
+    }
+
+    @GetMapping("/searchCodeResult")
+    @ResponseBody
+    public List<Coderesult> searchCodeResult(@RequestParam String id)
+    {
+        Coderesult coderesult = new Coderesult();
+        coderesult.setId(id);
+
+        System.out.println(id);
+        return coderesultService.selectCoderesultList(coderesult);
+    }
+
+    @GetMapping("/addCodeResult")
+    @ResponseBody
+    public AjaxResult addCodeResult(@RequestParam String id, @RequestParam String pid)
+    {
+        Coderesult coderesult = new Coderesult();
+        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
+        sdf.applyPattern("yyyy-MM-dd");// a为am/pm的标记
+        Date date = new Date();// 获取当前时间
+        coderesult.setId(id);
+        coderesult.setPid(pid);
+        coderesult.setTime(date);
+        return toAjax(coderesultService.insertCoderesult(coderesult));
     }
 }

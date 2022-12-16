@@ -1,6 +1,8 @@
 package com.ruoyi.detection.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -52,26 +54,9 @@ public class DetectionresultController extends BaseController
         return getDataTable(list);
     }
 
-    @RequestMapping("/searchDetectionRecord")
+    @GetMapping("/searchDetectionResult")
     @ResponseBody
-    public List<Detectionresult> searchDetectionRecord(@RequestParam(value="id") String id)
-    {
-        Detectionresult detectionresult = new Detectionresult();
-        detectionresult.setId(id);
-        return detectionresultService.selectDetectionresultList(detectionresult);
-    }
-
-    @RequestMapping("/searchDetectionRecord1")
-    @ResponseBody
-    public List<Detectionresult> searchDetectionRecord1()
-    {
-        Detectionresult detectionresult = new Detectionresult();
-        return detectionresultService.selectDetectionresultList(detectionresult);
-    }
-
-    @GetMapping("/searchDetectionRecord2")
-    @ResponseBody
-    public List<Detectionresult> searchDetectionRecord2(@RequestParam String id)
+    public List<Detectionresult> searchDetectionRecord(@RequestParam String id)
     {
         Detectionresult detectionresult = new Detectionresult();
         detectionresult.setId(id);
@@ -80,25 +65,19 @@ public class DetectionresultController extends BaseController
         return detectionresultService.selectDetectionresultList(detectionresult);
     }
 
-    @GetMapping("/searchDetectionRecord3")
-    @ResponseBody
-    public List<Detectionresult> searchDetectionRecord3(@RequestParam String result)
-    {
-        Detectionresult detectionresult = new Detectionresult();
-        detectionresult.setResult(result);
-
-        System.out.println(result);
-        return detectionresultService.selectDetectionresultList(detectionresult);
-    }
-
-    @GetMapping("/addDetectionRecord")
+    @GetMapping("/addDetectionResult")
     @ResponseBody
     public AjaxResult addDetectionRecord(@RequestParam String id, @RequestParam String sid, @RequestParam String result)
     {
         Detectionresult detectionresult = new Detectionresult();
+        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
+        sdf.applyPattern("yyyy-MM-dd");// a为am/pm的标记
+        Date date = new Date();// 获取当前时间
         detectionresult.setId(id);
         detectionresult.setSid(sid);
         detectionresult.setResult(result);
+        detectionresult.setTime(date);
+        System.out.println(date);
         return toAjax(detectionresultService.insertDetectionresult(detectionresult));
     }
 

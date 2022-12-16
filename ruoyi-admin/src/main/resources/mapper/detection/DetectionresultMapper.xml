@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="result != null  and result != ''"> and result = #{result}</if>
             <if test="time != null "> and time = #{time}</if>
         </where>
+        order by time
     </select>
     
     <select id="selectDetectionresultByNo" parameterType="Long" resultMap="DetectionresultResult">
