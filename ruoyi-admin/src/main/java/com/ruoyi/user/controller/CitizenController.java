@@ -147,5 +147,6 @@ public class CitizenController extends BaseController
         ArrayList<Map<String, String>> list = citizenService.getCitizenCodeColor();
         return list;
     }
+    
 }
 

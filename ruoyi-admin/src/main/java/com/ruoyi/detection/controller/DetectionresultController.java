@@ -8,11 +8,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.detection.domain.Detectionresult;
@@ -55,6 +51,66 @@ public class DetectionresultController extends BaseController
         List<Detectionresult> list = detectionresultService.selectDetectionresultList(detectionresult);
         return getDataTable(list);
     }
+
+    @RequestMapping("/searchDetectionRecord")
+    @ResponseBody
+    public List<Detectionresult> searchDetectionRecord(@RequestParam(value="id") String id)
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        detectionresult.setId(id);
+        return detectionresultService.selectDetectionresultList(detectionresult);
+    }
+
+    @RequestMapping("/searchDetectionRecord1")
+    @ResponseBody
+    public List<Detectionresult> searchDetectionRecord1()
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        return detectionresultService.selectDetectionresultList(detectionresult);
+    }
+
+    @GetMapping("/searchDetectionRecord2")
+    @ResponseBody
+    public List<Detectionresult> searchDetectionRecord2(@RequestParam String id)
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        detectionresult.setId(id);
+
+        System.out.println(id);
+        return detectionresultService.selectDetectionresultList(detectionresult);
+    }
+
+    @GetMapping("/searchDetectionRecord3")
+    @ResponseBody
+    public List<Detectionresult> searchDetectionRecord3(@RequestParam String result)
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        detectionresult.setResult(result);
+
+        System.out.println(result);
+        return detectionresultService.selectDetectionresultList(detectionresult);
+    }
+
+    @GetMapping("/addDetectionRecord")
+    @ResponseBody
+    public AjaxResult addDetectionRecord(@RequestParam String id, @RequestParam String sid, @RequestParam String result)
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        detectionresult.setId(id);
+        detectionresult.setSid(sid);
+        detectionresult.setResult(result);
+        return toAjax(detectionresultService.insertDetectionresult(detectionresult));
+    }
+
+    /*@GetMapping("/searchDetectionRecord2")
+    public List<Detectionresult> searchDetectionRecord2(@RequestParam String result)
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        detectionresult.setResult(result);
+
+        System.out.println(result);
+        return detectionresultService.selectDetectionresultList(detectionresult);
+    }*/
 
     /**
      * 导出检测结果列表

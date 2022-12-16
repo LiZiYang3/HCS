@@ -27,6 +27,7 @@ public interface CoderesultMapper
      */
     public List<Coderesult> selectCoderesultList(Coderesult coderesult);
 
+
     /**
      * 新增扫码记录
      * 
