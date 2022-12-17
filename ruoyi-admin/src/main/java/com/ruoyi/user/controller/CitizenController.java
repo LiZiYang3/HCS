@@ -145,7 +145,7 @@ public class CitizenController extends BaseController
         return list;
     }
 
-    @GetMapping("/searchCitizen")
+    @RequestMapping("/searchCitizen")
     @ResponseBody
     public List<Citizen> searchCitizen(@RequestParam String id)
     {

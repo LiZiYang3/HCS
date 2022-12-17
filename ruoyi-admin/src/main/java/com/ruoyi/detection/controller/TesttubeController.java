@@ -1,15 +1,16 @@
 package com.ruoyi.detection.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import com.ruoyi.user.domain.Citizen;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.detection.domain.Testtube;
@@ -89,6 +90,25 @@ public class TesttubeController extends BaseController
         return toAjax(testtubeService.insertTesttube(testtube));
     }
 
+    @RequestMapping("/addTube")
+    @ResponseBody
+    public AjaxResult addTube(@RequestParam String id,@RequestParam String sid, @RequestParam String max, @RequestParam String time)
+    {
+        Testtube tube = new Testtube();
+        Integer maxnum= Integer.valueOf(max);
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        tube.setTid(id);
+        tube.setSid(sid);
+        tube.setMaxNum(maxnum);
+        tube.setTime(date);
+
+        return toAjax(testtubeService.insertTesttube(tube));
+    }
     /**
      * 修改试管信息
      */

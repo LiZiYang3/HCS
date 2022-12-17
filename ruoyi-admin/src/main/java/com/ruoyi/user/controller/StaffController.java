@@ -5,11 +5,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.user.domain.Staff;
@@ -53,6 +49,17 @@ public class StaffController extends BaseController
         List<Staff> list = staffService.selectStaffList(staff);
         return getDataTable(list);
     }
+
+    @RequestMapping("/searchstaff")  /**     根据id查询检测人员信息       **/
+    @ResponseBody
+    public List<Staff> searchlist(@RequestParam String id)
+    {
+        Staff staff = new Staff();
+        staff.setSid(id);
+        System.out.println(staff);
+        return staffService.selectStaffList(staff);
+    }
+
 
     /**
      * 导出检测人员信息列表
