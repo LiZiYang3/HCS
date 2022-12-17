@@ -65,9 +65,20 @@ public class DetectionresultController extends BaseController
         return detectionresultService.selectDetectionresultList(detectionresult);
     }
 
-    @GetMapping("/addDetectionResult")
+    @GetMapping("/searchDetectionResult2")
     @ResponseBody
-    public AjaxResult addDetectionRecord(@RequestParam String id, @RequestParam String sid, @RequestParam String tid, @RequestParam String result)
+    public List<Detectionresult> searchDetectionRecord1(@RequestParam String tid)
+    {
+        Detectionresult detectionresult = new Detectionresult();
+        detectionresult.setTid(tid);
+
+        System.out.println(tid);
+        return detectionresultService.selectDetectionresultList(detectionresult);
+    }
+
+    @RequestMapping("/addDetectionResult")
+    @ResponseBody
+    public AjaxResult addDetectionRecord(@RequestParam String id, @RequestParam String sid, @RequestParam String tid)
     {
         Detectionresult detectionresult = new Detectionresult();
         SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
@@ -75,7 +86,6 @@ public class DetectionresultController extends BaseController
         Date date = new Date();// 获取当前时间
         detectionresult.setId(id);
         detectionresult.setSid(sid);
-        detectionresult.setResult(result);
         detectionresult.setTime(date);
         detectionresult.setTid(tid);
         System.out.println(date);
