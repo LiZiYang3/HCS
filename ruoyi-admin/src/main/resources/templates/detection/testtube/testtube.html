@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('检测结果列表')" />
+    <th:block th:include="include :: header('试管信息列表')" />
 </head>
 <body class="gray-bg">
      <div class="container-div">
@@ -11,27 +11,27 @@
                     <div class="select-list">
                         <ul>
                             <li>
-                                <label>市民身份证ID：</label>
-                                <input type="text" name="id"/>
+                                <label>检测试管ID：</label>
+                                <input type="text" name="tid"/>
                             </li>
                             <li>
                                 <label>检测人员ID：</label>
                                 <input type="text" name="sid"/>
                             </li>
                             <li>
-                                <label>试管ID：</label>
-                                <input type="text" name="tid"/>
+                                <label>创建时间：</label>
+                                <input type="text" class="time-input" placeholder="请选择创建时间" name="time"/>
                             </li>
                             <li>
-                                <label>核酸检测结果：</label>
+                                <label>检测结果：</label>
                                 <select name="result" th:with="type=${@dict.getType('detection_result')}">
                                     <option value="">所有</option>
                                     <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                                 </select>
                             </li>
                             <li>
-                                <label>检测时间：</label>
-                                <input type="text" class="time-input" placeholder="请选择检测时间" name="time"/>
+                                <label>最多检测人数：</label>
+                                <input type="text" name="maxNum"/>
                             </li>
                             <li>
                                 <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -43,23 +43,17 @@
             </div>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="detection:detectionresult:add">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="detection:testtube:add">
                     <i class="fa fa-plus"></i> 添加
                 </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="detection:detectionresult:edit">
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="detection:testtube:edit">
                     <i class="fa fa-edit"></i> 修改
                 </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="detection:detectionresult:remove">
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="detection:testtube:remove">
                     <i class="fa fa-remove"></i> 删除
                 </a>
-                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="detection:detectionresult:export">
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="detection:testtube:export">
                     <i class="fa fa-download"></i> 导出
-                </a>
-                <a class="btn btn-info" onclick="$.modal.openTab('核酸检测结果统计', '/detection/detectionresult/eCharts');" shiro:hasPermission="place:placecode:eCharts">
-                    <i class="fa fa-bar-chart-o"></i> 统计阴性阳性
-                </a>
-                <a class="btn btn-info" onclick="$.modal.openTab('核酸检测结果统计', '/detection/detectionresult/eCharts1');" shiro:hasPermission="place:placecode:eCharts1">
-                    <i class="fa fa-calendar"></i> 统计每月核酸检测数量
                 </a>
             </div>
             <div class="col-sm-12 select-table table-striped">
@@ -69,10 +63,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var editFlag = [[${@permission.hasPermi('detection:detectionresult:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('detection:detectionresult:remove')}]];
+        var editFlag = [[${@permission.hasPermi('detection:testtube:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('detection:testtube:remove')}]];
         var resultDatas = [[${@dict.getType('detection_result')}]];
-        var prefix = ctx + "detection/detectionresult";
+        var prefix = ctx + "detection/testtube";
 
         $(function() {
             var options = {
@@ -81,7 +75,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 exportUrl: prefix + "/export",
-                modalName: "检测结果",
+                modalName: "试管信息",
                 columns: [{
                     checkbox: true
                 },
@@ -91,27 +85,27 @@
                     visible: false
                 },
                 {
-                    field: 'id',
-                    title: '市民身份证ID'
+                    field: 'tid',
+                    title: '检测试管ID'
                 },
                 {
                     field: 'sid',
                     title: '检测人员ID'
                 },
                 {
-                    field: 'tid',
-                    title: '试管ID'
+                    field: 'time',
+                    title: '创建时间'
                 },
                 {
                     field: 'result',
-                    title: '核酸检测结果',
+                    title: '检测结果',
                     formatter: function(value, row, index) {
                        return $.table.selectDictLabel(resultDatas, value);
                     }
                 },
                 {
-                    field: 'time',
-                    title: '检测时间'
+                    field: 'maxNum',
+                    title: '最多检测人数'
                 },
                 {
                     title: '操作',

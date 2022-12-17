@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.detection.mapper.TesttubeMapper">
+    
+    <resultMap type="Testtube" id="TesttubeResult">
+        <result property="no"    column="no"    />
+        <result property="tid"    column="tid"    />
+        <result property="sid"    column="sid"    />
+        <result property="time"    column="time"    />
+        <result property="result"    column="result"    />
+        <result property="maxNum"    column="maxNum"    />
+    </resultMap>
+
+    <sql id="selectTesttubeVo">
+        select no, tid, sid, time, result, maxNum from testtube
+    </sql>
+
+    <select id="selectTesttubeList" parameterType="Testtube" resultMap="TesttubeResult">
+        <include refid="selectTesttubeVo"/>
+        <where>  
+            <if test="tid != null  and tid != ''"> and tid = #{tid}</if>
+            <if test="sid != null  and sid != ''"> and sid = #{sid}</if>
+            <if test="time != null "> and time = #{time}</if>
+            <if test="result != null  and result != ''"> and result = #{result}</if>
+            <if test="maxNum != null "> and maxNum = #{maxNum}</if>
+        </where>
+    </select>
+    
+    <select id="selectTesttubeByNo" parameterType="Long" resultMap="TesttubeResult">
+        <include refid="selectTesttubeVo"/>
+        where no = #{no}
+    </select>
+        
+    <insert id="insertTesttube" parameterType="Testtube" useGeneratedKeys="true" keyProperty="no">
+        insert into testtube
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tid != null and tid != ''">tid,</if>
+            <if test="sid != null and sid != ''">sid,</if>
+            <if test="time != null">time,</if>
+            <if test="result != null and result != ''">result,</if>
+            <if test="maxNum != null">maxNum,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tid != null and tid != ''">#{tid},</if>
+            <if test="sid != null and sid != ''">#{sid},</if>
+            <if test="time != null">#{time},</if>
+            <if test="result != null and result != ''">#{result},</if>
+            <if test="maxNum != null">#{maxNum},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTesttube" parameterType="Testtube">
+        update testtube
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tid != null and tid != ''">tid = #{tid},</if>
+            <if test="sid != null and sid != ''">sid = #{sid},</if>
+            <if test="time != null">time = #{time},</if>
+            <if test="result != null and result != ''">result = #{result},</if>
+            <if test="maxNum != null">maxNum = #{maxNum},</if>
+        </trim>
+        where no = #{no}
+    </update>
+
+    <delete id="deleteTesttubeByNo" parameterType="Long">
+        delete from testtube where no = #{no}
+    </delete>
+
+    <delete id="deleteTesttubeByNos" parameterType="String">
+        delete from testtube where no in 
+        <foreach item="no" collection="array" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </delete>
+
+</mapper>

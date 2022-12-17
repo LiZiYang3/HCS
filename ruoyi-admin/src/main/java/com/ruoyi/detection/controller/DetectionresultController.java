@@ -67,7 +67,7 @@ public class DetectionresultController extends BaseController
 
     @GetMapping("/addDetectionResult")
     @ResponseBody
-    public AjaxResult addDetectionRecord(@RequestParam String id, @RequestParam String sid, @RequestParam String result)
+    public AjaxResult addDetectionRecord(@RequestParam String id, @RequestParam String sid, @RequestParam String tid, @RequestParam String result)
     {
         Detectionresult detectionresult = new Detectionresult();
         SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
@@ -77,6 +77,7 @@ public class DetectionresultController extends BaseController
         detectionresult.setSid(sid);
         detectionresult.setResult(result);
         detectionresult.setTime(date);
+        detectionresult.setTid(tid);
         System.out.println(date);
         return toAjax(detectionresultService.insertDetectionresult(detectionresult));
     }

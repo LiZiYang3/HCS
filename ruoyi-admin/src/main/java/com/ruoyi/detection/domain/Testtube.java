@@ -8,38 +8,38 @@ import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 检测结果对象 detectionresult
+ * 试管信息对象 testtube
  * 
  * @author lzy
- * @date 2022-12-13
+ * @date 2022-12-17
  */
-public class Detectionresult extends BaseEntity
+public class Testtube extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /**  */
     private Long no;
 
-    /** 市民身份证ID */
-    @Excel(name = "市民身份证ID")
-    private String id;
+    /** 检测试管ID */
+    @Excel(name = "检测试管ID")
+    private String tid;
 
     /** 检测人员ID */
     @Excel(name = "检测人员ID")
     private String sid;
 
-    /** 核酸检测结果 */
-    @Excel(name = "核酸检测结果")
+    /** 创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date time;
+
+    /** 检测结果 */
+    @Excel(name = "检测结果")
     private String result;
 
-    /** 核酸检测试管 */
-    @Excel(name = "核酸检测试管")
-    private String tid;
-
-    /** 检测时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Excel(name = "检测时间", width = 30, dateFormat = "yyyy-MM-dd")
-    private Date time;
+    /** 最多检测人数 */
+    @Excel(name = "最多检测人数")
+    private Integer maxNum;
 
     public void setNo(Long no) 
     {
@@ -50,14 +50,14 @@ public class Detectionresult extends BaseEntity
     {
         return no;
     }
-    public void setId(String id) 
+    public void setTid(String tid) 
     {
-        this.id = id;
+        this.tid = tid;
     }
 
-    public String getId() 
+    public String getTid() 
     {
-        return id;
+        return tid;
     }
     public void setSid(String sid) 
     {
@@ -68,14 +68,14 @@ public class Detectionresult extends BaseEntity
     {
         return sid;
     }
-    public void setTid(String tid)
+    public void setTime(Date time) 
     {
-        this.tid = tid;
+        this.time = time;
     }
 
-    public String getTid()
+    public Date getTime() 
     {
-        return tid;
+        return time;
     }
     public void setResult(String result) 
     {
@@ -86,25 +86,25 @@ public class Detectionresult extends BaseEntity
     {
         return result;
     }
-    public void setTime(Date time) 
+    public void setMaxNum(Integer maxNum) 
     {
-        this.time = time;
+        this.maxNum = maxNum;
     }
 
-    public Date getTime() 
+    public Integer getMaxNum() 
     {
-        return time;
+        return maxNum;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("no", getNo())
-            .append("id", getId())
-            .append("sid", getSid())
             .append("tid", getTid())
-            .append("result", getResult())
+            .append("sid", getSid())
             .append("time", getTime())
+            .append("result", getResult())
+            .append("maxNum", getMaxNum())
             .toString();
     }
 }

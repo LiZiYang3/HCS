@@ -8,12 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="no"    column="no"    />
         <result property="id"    column="id"    />
         <result property="sid"    column="sid"    />
+        <result property="tid"    column="tid"    />
         <result property="result"    column="result"    />
         <result property="time"    column="time"    />
     </resultMap>
 
     <sql id="selectDetectionresultVo">
-        select no, id, sid, result, time from detectionresult
+        select no, id, sid, tid, result, time from detectionresult
     </sql>
 
     <select id="selectDetectionresultList" parameterType="Detectionresult" resultMap="DetectionresultResult">
@@ -21,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <where>  
             <if test="id != null  and id != ''"> and id = #{id}</if>
             <if test="sid != null  and sid != ''"> and sid = #{sid}</if>
+            <if test="tid != null  and tid != ''"> and tid = #{tid}</if>
             <if test="result != null  and result != ''"> and result = #{result}</if>
             <if test="time != null "> and time = #{time}</if>
         </where>
@@ -37,12 +39,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null and id != ''">id,</if>
             <if test="sid != null">sid,</if>
+            <if test="tid != null">tid,</if>
             <if test="result != null and result != ''">result,</if>
             <if test="time != null">time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null and id != ''">#{id},</if>
             <if test="sid != null">#{sid},</if>
+            <if test="tid != null">#{tid},</if>
             <if test="result != null and result != ''">#{result},</if>
             <if test="time != null">#{time},</if>
          </trim>
@@ -53,6 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <trim prefix="SET" suffixOverrides=",">
             <if test="id != null and id != ''">id = #{id},</if>
             <if test="sid != null">sid = #{sid},</if>
+            <if test="tid != null">tid = #{tid},</if>
             <if test="result != null and result != ''">result = #{result},</if>
             <if test="time != null">time = #{time},</if>
         </trim>
