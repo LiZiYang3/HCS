@@ -165,6 +165,7 @@ public class CitizenController extends BaseController
         citizen.setPassword(password);
         citizen.setPhoneNumber(phoneNumber);
         citizen.setHealthCode(healthCode);
+        System.out.println(citizen);
         return toAjax(citizenService.insertCitizen(citizen));
     }
 }

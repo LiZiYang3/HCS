@@ -54,14 +54,13 @@ public class DetectionresultController extends BaseController
         return getDataTable(list);
     }
 
-    @GetMapping("/searchDetectionResult")
+    @RequestMapping("/searchDetectionResult")
     @ResponseBody
     public List<Detectionresult> searchDetectionRecord(@RequestParam String id)
     {
         Detectionresult detectionresult = new Detectionresult();
         detectionresult.setId(id);
-
-        System.out.println(id);
+        System.out.println(detectionresultService.selectDetectionresultList(detectionresult));
         return detectionresultService.selectDetectionresultList(detectionresult);
     }
 

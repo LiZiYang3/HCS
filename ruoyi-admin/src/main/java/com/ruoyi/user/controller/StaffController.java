@@ -50,7 +50,7 @@ public class StaffController extends BaseController
         return getDataTable(list);
     }
 
-    @RequestMapping("/searchstaff")  /**     根据id查询检测人员信息       **/
+    @RequestMapping("/searchstaff")  /*    根据id查询检测人员信息       **/
     @ResponseBody
     public List<Staff> searchlist(@RequestParam String id)
     {
@@ -58,6 +58,18 @@ public class StaffController extends BaseController
         staff.setSid(id);
         System.out.println(staff);
         return staffService.selectStaffList(staff);
+    }
+
+    @RequestMapping("/addstaff")  /*    根据id查询检测人员信息       **/
+    @ResponseBody
+    public AjaxResult addstaff(@RequestParam String sid, @RequestParam String name, @RequestParam String password)
+    {
+        Staff staff = new Staff();
+        staff.setSid(sid);
+        staff.setName(name);
+        staff.setPassword(password);
+        System.out.println(staff);
+        return toAjax(staffService.insertStaff(staff));
     }
 
 
