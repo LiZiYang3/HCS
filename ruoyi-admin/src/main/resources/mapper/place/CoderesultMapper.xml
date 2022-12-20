@@ -9,19 +9,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="pid"    column="pid"    />
         <result property="time"    column="time"    />
         <result property="id"    column="id"    />
+        <result property="name"   column="name"   />
     </resultMap>
 
     <sql id="selectCoderesultVo">
         select no, pid, time, id from coderesult
     </sql>
 
-    <select id="selectCoderesultList" parameterType="Coderesult" resultMap="CoderesultResult">
-        <include refid="selectCoderesultVo"/>
-        <where>  
+    <select id="selectCoderesultListWithPlaceName" parameterType="Coderesult" resultMap="CoderesultResult">
+        select cr.no as no, cr.pid as pid, cr.id as id, cr.time as time, pc.placeName as name
+        from coderesult cr
+        LEFT JOIN  place pc  on cr.pid = pc.pid
+        <where>
             <if test="pid != null  and pid != ''"> and pid = #{pid}</if>
             <if test="time != null "> and time = #{time}</if>
             <if test="id != null  and id != ''"> and id = #{id}</if>
         </where>
+        order by time desc
+    </select>
+
+    <select id="selectCoderesultList" parameterType="Coderesult" resultMap="CoderesultResult">
+        <include refid="selectCoderesultVo"/>
+        <where>
+            <if test="pid != null  and pid != ''"> and pid = #{pid}</if>
+            <if test="time != null "> and time = #{time}</if>
+            <if test="id != null  and id != ''"> and id = #{id}</if>
+        </where>
+        order by time desc
     </select>
     
     <select id="selectCoderesultByNo" parameterType="Long" resultMap="CoderesultResult">

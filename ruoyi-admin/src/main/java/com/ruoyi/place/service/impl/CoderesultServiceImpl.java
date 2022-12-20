@@ -46,6 +46,11 @@ public class CoderesultServiceImpl implements ICoderesultService
         return coderesultMapper.selectCoderesultList(coderesult);
     }
 
+    public List<Coderesult> selectCoderesultListWithPlaceName(Coderesult coderesult)
+    {
+        return coderesultMapper.selectCoderesultListWithPlaceName(coderesult);
+    }
+
     /**
      * 新增扫码记录
      * 

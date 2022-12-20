@@ -26,7 +26,7 @@ public interface ICoderesultService
      * @return 扫码记录集合
      */
     public List<Coderesult> selectCoderesultList(Coderesult coderesult);
-
+    public List<Coderesult> selectCoderesultListWithPlaceName(Coderesult coderesult);
     /**
      * 新增扫码记录
      * 
@@ -58,6 +58,7 @@ public interface ICoderesultService
      * @return 结果
      */
     public int deleteCoderesultByNo(Long no);
+
 
     public List<Integer> getMonthlyPlaceScanRecordIncrement();
 }

@@ -26,7 +26,7 @@ public interface CoderesultMapper
      * @return 扫码记录集合
      */
     public List<Coderesult> selectCoderesultList(Coderesult coderesult);
-
+    public List<Coderesult> selectCoderesultListWithPlaceName(Coderesult coderesult);
 
     /**
      * 新增扫码记录

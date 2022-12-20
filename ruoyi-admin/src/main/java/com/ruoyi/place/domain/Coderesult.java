@@ -33,6 +33,11 @@ public class Coderesult extends BaseEntity
     @Excel(name = "市民身份证号")
     private String id;
 
+    /** 场所名称 */
+    @Excel(name = "场所名称")
+    private String name;
+
+
     public void setNo(Long no) 
     {
         this.no = no;
@@ -69,6 +74,22 @@ public class Coderesult extends BaseEntity
     {
         return id;
     }
+    public void setName(String name)
+    {
+        System.out.println("yunxingle");
+        this.name = name;
+    }
+    public Coderesult(String id, String pid, Date time, String name){
+        this.id = id;
+        this.pid = pid;
+        this.time = time;
+        this.name = name;
+    }
+    public Coderesult(){};
+    public String getName()
+    {
+        return name;
+    }
 
     @Override
     public String toString() {
@@ -77,6 +98,7 @@ public class Coderesult extends BaseEntity
             .append("pid", getPid())
             .append("time", getTime())
             .append("id", getId())
+            .append("name", getName())
             .toString();
     }
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.ruoyi.detection.domain.Detectionresult;
+import com.ruoyi.place.domain.Place;
+import com.ruoyi.place.service.IPlaceService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,9 @@ public class CoderesultController extends BaseController
 
     @Autowired
     private ICoderesultService coderesultService;
+
+    @Autowired
+    private IPlaceService placeService;
 
 
     @GetMapping()
@@ -151,9 +156,18 @@ public class CoderesultController extends BaseController
     {
         Coderesult coderesult = new Coderesult();
         coderesult.setId(id);
-
         System.out.println(id);
         return coderesultService.selectCoderesultList(coderesult);
+    }
+
+    @RequestMapping("/searchCodeResultWithName")
+    @ResponseBody
+    public List<Coderesult> searchCodeResultWithName(@RequestParam String id)
+    {
+        Coderesult coderesult = new Coderesult();
+        coderesult.setId(id);
+
+        return coderesultService.selectCoderesultListWithPlaceName(coderesult);
     }
 
     @GetMapping("/addCodeResult")
