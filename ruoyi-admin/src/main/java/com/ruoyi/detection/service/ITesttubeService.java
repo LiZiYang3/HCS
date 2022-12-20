@@ -1,6 +1,9 @@
 package com.ruoyi.detection.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.detection.domain.Testtube;
 
 /**
@@ -58,4 +61,5 @@ public interface ITesttubeService
      * @return 结果
      */
     public int deleteTesttubeByNo(Long no);
+    public ArrayList<Map<String, String>> getDetectionResult();
 }

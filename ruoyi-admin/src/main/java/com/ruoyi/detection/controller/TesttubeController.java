@@ -2,8 +2,10 @@ package com.ruoyi.detection.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.ruoyi.user.domain.Citizen;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -143,5 +145,23 @@ public class TesttubeController extends BaseController
     public AjaxResult remove(String ids)
     {
         return toAjax(testtubeService.deleteTesttubeByNos(ids));
+    }
+
+    /**
+     * 统计试管信息
+     */
+    @RequiresPermissions("detection:testtube:eCharts")
+    @GetMapping("/eCharts")
+    public String statistics(ModelMap mmap)
+    {
+        return prefix + "/eCharts";
+    }
+    //
+    @RequiresPermissions("place:testtube:eCharts")
+    @PostMapping("/eCharts")
+    @ResponseBody
+    public ArrayList<Map<String, String>> statisticsData()
+    {
+        return testtubeService.getDetectionResult();
     }
 }

@@ -55,7 +55,11 @@
                 <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="detection:testtube:export">
                     <i class="fa fa-download"></i> 导出
                 </a>
+                <a class="btn btn-info" onclick="$.modal.openTab('试管检测结果统计', '/detection/testtube/eCharts');">
+                    <i class="fa fa-bar-chart-o"></i> 统计试管结果
+                </a>
             </div>
+
             <div class="col-sm-12 select-table table-striped">
                 <table id="bootstrap-table"></table>
             </div>
