@@ -103,7 +103,7 @@ public class DetectionresultServiceImpl implements IDetectionresultService
         for (Detectionresult item : detectionresults) {
             if ( "0".equals(item.getResult()) ) {
                 yin_count_0 += 1;
-            }else{
+            }else if ( "1".equals(item.getResult()) ){
                 yang_count_1 += 1;
             }
         }
