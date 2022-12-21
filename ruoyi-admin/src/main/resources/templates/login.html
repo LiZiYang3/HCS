@@ -29,7 +29,7 @@
                        <!--<h1><img alt="[ 若依 ]" src="../static/ruoyi.png" th:src="@{/ruoyi.png}"></h1>-->
                     </div>
                     <div class="m-b"></div>
-                        <h3>欢迎使用 <strong>核酸检测系统</strong></h3>
+                        <h1>欢迎使用 <strong>核酸检测系统</strong></h1>
                     <ul class="m-b">
 <!--                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> SpringBoot</li>-->
 <!--                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Mybatis</li>-->
@@ -57,7 +57,7 @@
 <!--						</div>-->
 <!--					</div>-->
                     <div class="checkbox-custom" th:if="${isRemembered}" th:classappend="${captchaEnabled==false} ? 'm-t'">
-				        <input type="checkbox" id="rememberme" name="rememberme"> <label for="rememberme">记住我</label>
+				        <input type="checkbox" id="rememberme" name="rememberme"> <label for="rememberme"><br>记住我</label>
 				    </div>
                     <button class="btn btn-success btn-block" id="btnSubmit" data-loading="正在验证登录，请稍候...">登录</button>
                 </form>
