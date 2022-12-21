@@ -1,0 +1,157 @@
+/* pages/work_staff/work_staff.wxss */
+page {
+  height: 100%;
+  background: -webkit-linear-gradient(left, #487ae6, #0d8fda);
+}
+
+.container{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: white;
+  width:90%; 
+  display: flexbox;
+  box-sizing: border-box;
+  position: relative; 
+  left: 0rpx; 
+  top: 129rpx; 
+  width: 675rpx; 
+  height: 960rpx; 
+  display: flex; 
+  box-sizing: border-box;
+}
+.img{
+  height: 1200rpx;
+  width: 600rpx;
+}
+.addr{
+  width: 94%;
+  height: 180rpx;
+  margin-top: 20rpx;
+  /* margin: 16rpx auto 0; */
+  background: #ffffff;
+  border-radius: 8rpx;
+  overflow: hidden
+}
+.addrinfo{
+  width: 92%;
+  height: 60rpx;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  line-height: 88rpx;
+}
+.title{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+#name,#tel{
+  width: 88%;
+  height: 70rpx;
+  margin:auto;
+  border-radius: 25rpx;
+  border:2rpx solid #569fff;
+  font-size: 24rpx;
+  color: #000000;
+  padding: 0 0 0 24rpx;
+
+}
+#tel{
+  margin-top: 16rpx;
+}
+.name,.tel{
+  font-size: 24rpx;
+  color: #4b4a4a;
+}
+
+.add{
+  position: relative;
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  width: 300rpx !important;
+  height: 50rpx;
+  border-radius: 50rpx;
+  /* position: relative; */
+  color: white;
+  top:20rpx;
+  background-color:#1296db ;
+}
+
+.img_scan{
+  width: 25rpx;
+  height: 25rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  left: -100rpx;
+  top: -25rpx
+}
+
+.scan1{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  width: 300rpx !important;
+  height: 50rpx;
+  border-radius: 50rpx;
+  position: relative;
+  top: 30rpx;
+  color: white;
+  background-color:#1296db ;
+}
+
+.exit{
+  padding: 0rpx;
+  width: 600rpx;
+  height: 50rpx;
+  position: relative;
+  margin-bottom: 10rpx;
+}
+.submit{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  width: 120rpx !important;
+  height: 50rpx;
+  border-radius: 30rpx;
+  position: relative;
+  color: white;
+  margin-bottom: 10rpx;
+  float: right;
+  background-color:#1296db ;
+}
+.resetBtn{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  width: 120rpx !important;
+  height: 50rpx;
+  border-radius: 30rpx;
+  position: relative;
+  color: white;
+  margin-bottom: 10rpx;
+  float: left;
+  background-color:#1296db ;
+}
+.view{
+  height: 650rpx;
+  width: 580rpx;
+  border: solid 1rpx #1296db;
+  border-radius: 30rpx;
+}
+.list{
+  width: 550rpx;
+  height: 30rpx;
+  margin: 16rpx auto;
+  background: #ffffff;
+  border-radius: 8rpx;
+}
+.sfz{
+  font-size:x-small;
+}

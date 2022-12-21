@@ -1,0 +1,36 @@
+<!--pages/register/register.wxml-->
+<view class="content" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  
+  <view class="container">
+    <view class="dltext">注册</view>
+  <view class="message">
+
+  <image class="img_name" src="../../img/people-business.png"></image>
+  <input class="name" placeholder="输入姓名" bindinput="userNameInput"/>
+
+  <image class="img_id" src="../../img/id card.png"></image>
+  <input class="id" placeholder="输入身份证号码" bindinput="idInput"/>
+
+  <image class="img_password" src="../../img/password2.png"></image>
+  <input class="password" password placeholder="输入密码" bindinput="passwordInput"/>
+
+  <image class="img_password_again" src="../../img/safety certificate.png"></image>
+  <input class="password_again" password placeholder="再次输入密码" bindinput="passwordAgainInput"/>
+
+  
+  
+  </view>
+
+    
+  
+    <!-- 注册按钮 -->
+    <view class="register">
+      <button class="btn-dl" bindtap="register">注册</button>
+    </view>
+    <view class="exit" >
+      <button class="resetBtn" bindtap="exit" >返回</button>
+    </view>
+
+  </view>
+
+</view>

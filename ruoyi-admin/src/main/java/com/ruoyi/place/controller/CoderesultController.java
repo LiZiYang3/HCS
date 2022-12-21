@@ -1,10 +1,12 @@
 package com.ruoyi.place.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import com.ruoyi.detection.domain.Detectionresult;
+import com.ruoyi.detection.domain.Testtube;
 import com.ruoyi.place.domain.Place;
 import com.ruoyi.place.service.IPlaceService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -94,6 +96,23 @@ public class CoderesultController extends BaseController
         return toAjax(coderesultService.insertCoderesult(coderesult));
     }
 
+    @RequestMapping("/addRecord")
+    @ResponseBody
+    public AjaxResult addRecord(@RequestParam String pid,@RequestParam String id,  @RequestParam String time)
+    {
+        Coderesult codere = new Coderesult();
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        codere.setId(id);
+        codere.setPid(pid);
+        codere.setTime(date);
+
+        return toAjax(coderesultService.insertCoderesult(codere));
+    }
     /**
      * 修改扫码记录
      */

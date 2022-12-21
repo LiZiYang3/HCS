@@ -1,0 +1,21 @@
+<view class="content" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  
+  <view class="container">
+
+    <image class="img" src="../../img/login.png" />
+
+    <!-- <text class="login">登录</text> -->
+
+    <view class="citizen" >
+      <button bindtap="login_citizen">市民端</button>
+    </view>
+  
+    <view class="staff">
+      <button bindtap="login_staff">检测人员端</button>
+    </view>
+  
+    
+  
+  </view>
+
+</view>

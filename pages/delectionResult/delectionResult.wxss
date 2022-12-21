@@ -1,0 +1,98 @@
+/* pages/delectionResult/delectionResult.wxss */
+page {
+  height: 100%;
+}
+.red{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: #ff8b8b;
+  width: 94%;
+}
+.green{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: #7eca5f;
+  width: 94%;
+}
+.darkBlue{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: #1a5be7;
+  width: 94%;
+}
+.lightBlue{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: #1f98df;
+  width: 94%;
+}
+.gray{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: #868686;
+  width: 94%;
+}
+
+.checked_address_container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  width: 98%;
+  background-color: #15c257fd;
+}
+
+.title_text {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-top: 5rpx;
+}
+
+.input_text {
+  text-align: center;
+  font-size: 24rpx;
+  flex-grow: 1;
+  margin: 5rpx;
+  margin-right: 15rpx;
+  width: 0%;
+  height: 4rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+
+.address_text {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin: 5rpx;
+  margin-left: 10rpx;
+  color: #ffffff;
+}

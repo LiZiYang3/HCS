@@ -1,0 +1,59 @@
+<!--pages/delectionResult/delectionResult.wxml-->
+<view class="content">
+  <text style="color: rgb(0, 0, 0);margin-top: 100rpx;">核酸检测结果</text>
+<block wx:for="{{detectionResults}}" wx:for-item="delectionResult">
+  <view wx:if="{{delectionResult.result=='1'}}" class="'red'" bindtap="ischecked_func" style="margin-top: 20rpx;align-items: center;align-self: center;">
+    <view style="display: flex;flex-direction: column;align-items: center; margin:20rpx;width:100%">
+    
+      <view style="flex-direction:row;align-items: center;margin: 5rpx;width:60%;">
+        <text class="address_text" style="position: relative; left: -45rpx; top: -8rpx">检测时间</text>
+        <text class="address_text" style="position: relative; left: 53rpx; top: -8rpx">{{result.toDate(delectionResult.time)}}</text>
+      </view>
+      
+      <view style="flex-direction:row;align-items: center;margin: 5rpx;width: 80%">
+        <text class="address_text" style="position: relative; left: -135rpx; top: -8rpx">检测结果</text>
+        <text class="address_text" style="position: relative; left: 53rpx; top: -8rpx">{{result.toResult(delectionResult.result)}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{delectionResult.result=='0'}}"class="'green'" bindtap="ischecked_func" style="margin-top: 20rpx;align-items: center;align-self: center;">
+    <view style="display: flex;flex-direction: column;align-items: center; margin:20rpx;width:100%">
+    
+      <view style="flex-direction:row;align-items: center;margin: 5rpx;width:60%;">
+        <text class="address_text" style="position: relative; left: -45rpx; top: -8rpx">检测时间</text>
+        <text class="address_text" style="position: relative; left: 53rpx; top: -8rpx">{{result.toDate(delectionResult.time)}}</text>
+      </view>
+      
+      <view style="flex-direction:row;align-items: center;margin: 5rpx;width: 80%">
+        <text class="address_text" style="position: relative; left: -137rpx; top: -8rpx">检测结果</text>
+        <text class="address_text" style="position: relative; left: 53rpx; top: -8rpx">{{result.toResult(delectionResult.result)}}</text>
+      </view>
+    </view>
+  </view>
+</block>
+<button type="default" style="margin-top: 20rpx; position: relative; left: 0rpx; top: 45rpx" bindtap="exit">返回</button>
+
+
+
+
+ 
+</view>
+<wxs module="result">
+  var toResult = function(array) {
+    if (array=='0') {
+      return '阴性';
+    }
+    else if (array=='1') {
+      return '阳性';
+    }
+  }
+
+  var toDate = function(array) {
+    var date = array.substring(0, 4) + '年' + parseInt(array.substring(5,7)) + '月' + parseInt(array.substring(8,10)) + "日";
+    return date;
+  }
+  module.exports.toResult = toResult;
+  module.exports.toDate = toDate;
+  
+</wxs>
+

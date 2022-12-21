@@ -1,0 +1,35 @@
+<!--pages/login_citizen/login_citizen.wxml-->
+<view class="content" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  
+  <view class="container">
+
+    <view class="id" >
+      <view class="dltext">市民登录</view>
+      <image src="../../img/login_id.png" class="ph"></image>
+      <input class="input_id" name="userName" placeholder="身份证号码" bindinput="userNameInput"/>
+    </view>
+    <view class="password">
+      <image src="../../img/password.png" class="ps" ></image>
+      <input class="input_password" password='{{passwordType}}' placeholder="密码" bindinput="passWdInput" />
+       <image src='{{defaultType?"../../img/hide.png":"../../img/view.png" }}'class="eye" bindtap="eyeStatus"></image>
+    </view>
+  
+    <!-- 登录按钮 -->
+    <view class="denglu">
+      <button class="btn-dl" bindtap="login">登录</button>
+    </view>
+    <view class="zhuce">
+      <button class="zhucebotton" bindtap="register" style="width: 350rpx; height: 50rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">注册</button>
+    </view>
+    <view class="fanhui">
+      <button class="resetBtn" bindtap="exit">返回</button>
+    </view>
+  
+    
+      
+    
+    
+
+  </view>
+
+</view>

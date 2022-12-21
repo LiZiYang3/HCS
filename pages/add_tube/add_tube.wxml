@@ -1,0 +1,26 @@
+<!--pages/add_tube/add_tube.wxml-->
+<view class="content" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  
+  <view class="container">
+    <!-- <image class="img" src="../../img/做核酸啦.png" /> -->
+    <view class='addr'>
+    <text class="title">添加试管</text>
+      <input class='id' placeholder='试管ID' bindinput="id" ></input>
+      <input class='id' placeholder='最大检测人数' bindinput="max" type="number"></input>
+      <view class='tel' bindinput="max">{{time}}{{time_s}}</view>
+    </view>
+
+    <view class="scan">
+      <button class="add" bindtap="add" >确认添加</button>
+      <button class="view" bindtap="view" >查看封箱</button>
+    </view>
+    
+
+    <view class="exit" >
+      <button class="resetBtn" bindtap="exit" >退出登录</button>
+    </view>
+  
+  </view>
+
+</view>
+

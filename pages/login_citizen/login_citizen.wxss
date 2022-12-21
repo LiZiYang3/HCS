@@ -1,0 +1,161 @@
+/* pages/login_citizen/login_citizen.wxss */
+page {
+  height: 100%;
+  background: -webkit-linear-gradient(left, #487ae6, #0d8fda);
+}
+
+.container1{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: white;
+  width:90%; 
+  display: flexbox;
+  box-sizing: border-box;
+}
+
+/* 白色区域 */
+.container{
+  position: relative;
+  margin-top: 200rpx; 
+  width: 545rpx;
+  height: 810rpx;
+  background: #FFFFFF;
+  border-radius: 50rpx;
+}
+
+/* 白色区域内的登录文本 */
+.dltext{
+  position: absolute;
+  width: 600rpx;
+  height: 100rpx;
+  left: 30rpx;
+  top: -153rpx;
+  font-size: 40rpx;
+  font-family: Helvetica;
+  color: #000000;
+  line-height: 100rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 账号+输入框+下划线的父容器view */
+.id{
+  margin-top: 200rpx;
+  margin-left: 35rpx;
+  position: absolute;
+  display: flex;
+  width:450rpx ;
+  height: 80rpx ;
+  border-bottom: 3rpx solid rgb(58, 57, 57);
+}
+/* 账号图标 */
+.ph{
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  width: 40rpx;
+  height: 45rpx;
+}
+/* 账号输入框 */
+.input_id{
+  width: 200rpx;
+  font-size: 25rpx ;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+
+/* 密码图标+输入框+小眼睛图标+下划线父容器view */
+.password{
+  margin-top: 350rpx;
+  margin-left: 35rpx;
+  position: absolute;
+  display: flex;
+  width:450rpx ;
+  height: 80rpx ;
+  border-bottom: 3rpx solid rgb(58, 57, 57);
+}
+
+/* 密码图标 */
+.ps{
+  margin-top: 25rpx;
+  margin-left: 30rpx;
+  width: 30rpx;
+  height: 35rpx;
+}
+/* 眼睛 图标*/
+.eye{
+  margin-top: 30rpx;
+  margin-left: 100rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+/* 密码输入框 */
+.input_password{
+  width: 200rpx;
+  font-size: 25rpx ;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+
+
+.zhucebotton{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 25rpx;
+  width: 20%;
+  height: 100%;
+  border-radius: 30rpx;
+  color: rgb(255, 255, 255);
+  background-color:#1296db ;
+}
+/* 登录按钮容器view */
+.denglu{
+  width: 350rpx;
+  height: 50rpx;
+  position: absolute;
+  margin-top: 550rpx;
+  margin-left: 80rpx;
+   
+}
+.zhuce{
+  width: 350rpx;
+  height: 50rpx;
+  position: absolute;
+  margin-top: 630rpx;
+  margin-left: 80rpx;
+}
+/* 登录按钮 */
+.denglu button{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 25rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 30rpx;
+  color: white;
+  background-color:#1296db ;
+}
+
+/* 返回按钮容器view */
+.fanhui{
+  width: 350rpx;
+  height: 50rpx;
+  position: absolute;
+  margin-top: 710rpx;
+  margin-left: 80rpx;
+   
+}
+/* 返回按钮 */
+.fanhui button{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 25rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 30rpx;
+  color: white;
+  background-color:#1296db ;
+}

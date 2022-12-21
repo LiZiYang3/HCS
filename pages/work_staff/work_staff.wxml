@@ -1,0 +1,33 @@
+<!--pages/work_staff/work_staff.wxml-->
+<view class="content" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  
+  <view class="container">
+    <view class='addr'>
+      <view class='addrinfo'>
+        <view class='title'>被检人员信息</view>
+      </view>
+      <!-- <input id='name' placeholder='请输入姓名' placeholder-class='name'></input> -->
+      <input id='tel' wx:if="{{sfz==null}}" placeholder='请输入身份证号码' placeholder-class='tel' bindinput="sfz"></input>
+      <input id='tel' wx:if="{{sfz!=null}}" value='{{sfz}}' placeholder-class='tel' bindinput="sfz"></input>
+    </view>
+    <view class='view'>
+      <view class='list' wx:for="{{sidList}}" wx:for-item="item" wx:key='id'>
+        <view class='sfz'>第{{item.id}}个身份证号码：{{item.sid}}</view>
+      </view>
+    </view>
+
+    <view class="scan">
+      <button class="add" bindtap="add" >确认添加</button>
+      <button class="scan1" bindtap="scan" >扫描健康码</button>
+      <image class="img_scan" src="../../img/scan1.png" ></image>
+    </view>
+    
+
+    <view class="exit" >
+      <button class="submit" bindtap="submit" >封箱</button>
+      <button class="resetBtn" bindtap="exit" >退出</button>
+    </view>
+  
+  </view>
+
+</view>

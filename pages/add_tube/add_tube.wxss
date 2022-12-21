@@ -1,0 +1,117 @@
+/* pages/add_tube/add_tube.wxss */
+/* pages/work_staff/work_staff.wxss */
+page {
+  height: 100%;
+  background: -webkit-linear-gradient(left, #487ae6, #0d8fda);
+}
+
+.container{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: white;
+  width:90%; 
+  display: flexbox;
+  box-sizing: border-box;
+  position: relative; 
+  left: 0rpx; 
+  top: 129rpx; 
+  width: 675rpx; 
+  height: 960rpx; 
+  display: flex; 
+  box-sizing: border-box;
+}
+.img{
+  height: 1200rpx;
+  width: 600rpx;
+}
+.addr{
+  width: 94%;
+  height: 500rpx;
+  margin-top: 50rpx;
+  /* margin: 16rpx auto 0; */
+  background: #ffffff;
+  border-radius: 8rpx;
+  overflow: hidden
+}
+.title{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-right: 450rpx;
+}
+
+.id{
+  font-size: 24rpx;
+  color: #4b4a4a;
+  background: #dfdfdf;
+  border-radius: 50rpx;
+  margin-top:40rpx;
+  height:70rpx;
+  width: 600rpx;
+  margin-left: 20rpx;
+}
+.tel{
+  font-size: 24rpx;
+  color: #4b4a4a;
+  background: #dfdfdf;
+  border-radius: 50rpx;
+  margin-top:50rpx;
+  height:70rpx;
+  width: 600rpx;
+  margin-left: 20rpx;
+  line-height: 70rpx;
+}
+
+.add{
+  position: relative;
+  padding: 0rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  width: 300rpx !important;
+  height: 60rpx;
+  border-radius: 50rpx;
+  font-weight:normal;
+  color: white;
+  background-color:#1296db ;
+}
+
+.view{
+  padding: 0rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  width: 300rpx !important;
+  height: 60rpx;
+  border-radius: 50rpx;
+  position: relative;
+  font-weight:normal;
+  top: 30rpx;
+  color: white;
+  background-color:#1296db ;
+}
+
+.exit{
+  padding: 0rpx;
+  width: 600rpx;
+  height: 50rpx;
+  position: relative;
+  margin-bottom: 10rpx;
+}
+.resetBtn{
+  padding: 0rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  width: 120rpx !important;
+  height: 50rpx;
+  border-radius: 30rpx;
+  position: relative;
+  color: white;
+  margin-bottom: 10rpx;
+  font-weight:normal;
+  float: right;
+  background-color:#1296db ;
+}

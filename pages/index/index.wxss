@@ -1,0 +1,98 @@
+/* pages/index_address/index_address.wxss */
+page {
+  height: 100%;
+  background: -webkit-linear-gradient(left, #487ae6, #0d8fda);
+}
+
+.container1{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: white;
+  width:90%; 
+  display: flexbox;
+  box-sizing: border-box;
+}
+
+/* 白色区域 */
+.container{
+  position: relative;
+  margin-top: 200rpx; 
+  width: 545rpx;
+  height: 750rpx;
+  background: #FFFFFF;
+  border-radius: 50rpx;
+}
+
+/*图片*/
+.img{
+  width: 216rpx; 
+  height: 211rpx; 
+  display: inline-block;
+  box-sizing: border-box; 
+  position: relative; 
+  left: 170rpx; 
+  top: 100rpx
+}
+
+/*登录字体*/
+.login{
+  position: relative;
+  font-weight: 400;
+  left: 25rpx; 
+  top: 77rpx
+}
+
+/* 市民按钮容器view */
+.citizen{
+  width: 350rpx;
+  height: 80rpx;
+  position: absolute;
+  margin-top: 670rpx;
+  margin-left: 100rpx;
+   
+}
+/* 市民按钮 */
+.citizen button{
+  padding: 0rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0rpx; 
+  top: -500rpx;
+  border-radius: 50rpx;
+  color: #515151;
+  background-color:#dbdbdb ;
+}
+
+/* 核酸检测人员按钮容器view */
+.staff{
+  width: 350rpx;
+  height: 80rpx;
+  position: absolute;
+  margin-top: 670rpx;
+  margin-left: 80rpx;
+  left: 20rpx; 
+  top: -47rpx;
+   
+}
+/* 核酸检测人员按钮 */
+.staff button{
+  padding: 0rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  position: absolute;
+  left: 0rpx; 
+  top: -108rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 50rpx;
+  color: #515151;
+  background-color:#dbdbdb ;
+}

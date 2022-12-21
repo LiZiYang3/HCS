@@ -1,0 +1,181 @@
+/* 健康码小程序/pages/register_staff/register_staff.wxss */
+/* pages/register/register.wxss */
+page {       /* 背景设置*/
+  height: 100%;
+  background: -webkit-linear-gradient(left, #487ae6, #0d8fda);
+}
+/* 白色框样式参数*/
+.container{  
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: white;
+  width:90%; 
+  display: flexbox;
+  box-sizing: border-box;
+  position: relative; 
+  left: 0rpx; 
+  top: 129rpx; 
+  width: 675rpx; 
+  height: 940rpx; 
+  display: flex; 
+  box-sizing: border-box;
+}
+
+/* “注册”这两字的样式*/
+.dltext{
+  margin-top: 160rpx;
+  position: absolute;
+  margin-left:180rpx;
+  width: 150rpx;
+  height: 100rpx;
+  left: 66rpx;
+  top: -153rpx;
+  font-size: 60rpx;
+  font-family: Helvetica;
+  color: #000000;
+  line-height: 100rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 名字输入框*/
+.name{
+  font-size: 30rpx;
+  margin-top: 80rpx; 
+  border-radius: 50rpx;
+  color: black;
+  height: 80rpx;
+  width: 450rpx;
+  background-color:#dbdbdb ;
+}
+
+/* 名字输入框的图标*/
+.img_name{
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  left: -150rpx;
+  top: 148rpx
+}
+
+/* 身份证输入框*/
+.id{
+  font-size: 30rpx;
+  margin-top: -20rpx; 
+  border-radius: 50rpx;
+  height: 80rpx;
+  width: 450rpx;
+  color: black;
+  background-color:#dbdbdb ;
+}
+
+/* 身份证图标*/
+.img_id{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  left: -150rpx;
+  top: 43rpx
+}
+
+/* 手机号输入框*/
+.phone{
+  font-size: 30rpx;
+  margin-top: -20rpx; 
+  border-radius: 50rpx;
+  height: 80rpx;
+  width: 450rpx;
+  color: black;
+  background-color:#dbdbdb ;
+}
+
+/* 手机号图标*/
+.img_phone{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  left: -150rpx;
+  top: 43rpx
+}
+
+/* 密码输入框*/
+.password{
+  font-size: 30rpx;
+  margin-top: -20rpx; 
+  border-radius: 50rpx;
+  height: 80rpx;
+  width: 450rpx;
+  color: black;
+  background-color:#dbdbdb ;
+}
+
+/* 密码图标*/
+.img_password{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  left: -150rpx;
+  top: 43rpx
+}
+
+/* 再次输入密码*/
+.password_again{
+  font-size: 30rpx;
+  margin-top: -20rpx; 
+  border-radius: 50rpx;
+  height: 80rpx;
+  width: 450rpx;
+  color: black;
+  background-color:#dbdbdb ;
+}
+
+/* 再次输入密码图标*/
+.img_password_again{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  left: -150rpx;
+  top: 43rpx
+}
+
+/* 注册按钮 */
+.register button{
+  padding: 0rpx;
+  line-height: 70rpx;
+  font-size: 35rpx;
+  width: 400rpx;
+  height: 70rpx;
+  border-radius: 30rpx;
+  position: relative;
+  top: 43rpx;
+  color: white;
+  background-color:#1296db ;
+}
+
+/* 返回按钮设置*/
+.exit button{
+  padding: 0rpx;
+  line-height: 70rpx;
+  font-size: 35rpx;
+  width: 400rpx;
+  height: 70rpx;
+  border-radius: 30rpx;
+  position: relative;
+  top: 70rpx;
+  color: white;
+  background-color:#1296db ;
+}

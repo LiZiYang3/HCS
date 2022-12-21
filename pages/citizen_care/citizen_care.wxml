@@ -1,0 +1,99 @@
+<!--HCS/pages/citizen_care/citizen_care.wxml-->
+
+<view class="content" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <text class="title" style="color: white;margin-top: 80rpx;">四川天府健康通</text>
+
+  <view class="container" style="height: -19rpx; margin-top: 10rpx; width: -176rpx; display: flex; box-sizing: border-box">
+  
+    <view wx:for="{{citizens}}" wx:for-item="citizen" class="time_content" style=" margin-bottom:15rpx; margin-top:50rpx">
+      <view class="name" style="position: relative; left: -45rpx; top: -39rpx"> {{citizen.name}}</view>
+      <view class="id" style="position: relative; left: -162rpx; top: 24rpx">{{cardID.toHide(citizen.id)}}</view>
+    </view>
+  
+    <view class="container">
+      <!-- 分割线 -->
+      <view class="divLine" style="position: relative; left: 0rpx; top: 5rpx"></view>
+    </view>
+
+    <view class="time_content" style=" margin-bottom:20rpx; margin-top:50rpx">
+      <view class="cur_time" style="position: relative; left: 3rpx; top: -47rpx">{{Time}}</view>
+      <view class="cur_time_s" style="position: relative; left: 3rpx; top: -47rpx">{{Time_s}}</view>
+    </view>
+  
+    <image style="width: 400rpx; height: 400rpx; position: relative; left: 1rpx; top: -52rpx; display: block; box-sizing: border-box" src="../../img/qr_code.jpg" />
+    <!-- <canvas type="2d" style="width: 200px; height: 200px;margin-top: 0rpx; " id="myQrcode"></canvas> -->
+  
+  
+    <view wx:if="{{default_address}}" style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-top: 20rpx;margin-bottom:30rpx;">
+  
+      
+    
+    </view>
+  
+    <view wx:if="{{!default_address}}" class="address_block" style="display: flex;flex-direction: column;align-items: center;justify-content: center;margin-top: 20rpx;">
+      <text class="address_title">{{title}}</text>
+      <text class="address_info">{{address}}</text>
+    </view>
+  
+    <view wx:for="{{citizens}}" wx:for-item="citizen" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: center; width: 550rpx; height: 90rpx; box-sizing: border-box; margin-bottom: 30rpx; position: relative; left: -1rpx; top: -73rpx">
+  
+    
+  
+      <text style="font-size: 35rpx; margin: 0rpx; position: relative; left: 12rpx; top: -45rpx">最近一次核酸检测结果 </text>
+  
+      <text wx:if="{{citizen.healthCode == '0'}}" style="font-size: 35rpx;font-weight: bold;color:  #19B66E;margin:0rpx; position: relative; left: 12rpx; top: -45rpx">【阴性】</text>
+      <text wx:if="{{citizen.healthCode == '1'}}" style="font-size: 35rpx; font-weight: bold; color: #fdd317; margin: 0rpx; position: relative; left: 12rpx; top: -45rpx">【阴性】</text>
+      <text wx:if="{{citizen.healthCode == '2'}}" style="font-size: 35rpx;font-weight: bold;color: #fa000d;margin:0rpx; position: relative; left: 12rpx; top: -45rpx">【阳性】</text>
+    </view>
+    <view>
+      <button class="citizen" style="position: absolute; left: 160rpx; top: 277rpx" >扫描场所码</button>
+    </view>
+  
+
+  </view>
+
+  <view class="container" style="height:17%;margin-top: 20rpx;">
+    <!-- bottom icon and name -->
+    <view style="display:flex;flex-direction:row;margin-top: 40rpx;">
+      <view style="display:flex;flex-direction:column;align-items: center;margin-right:60rpx" bindtap="jump" data-url="../delectionResult/delectionResult">
+        <image style="width:110rpx;height:110rpx;" src="../../img/report.png" />
+        <text style="font-size: 30rpx;font-weight: bold;margin:10rpx">核酸记录</text>
+      </view>
+
+      <view style="display: flex; flex-direction: column; align-items: center; margin-right: rpx; position: relative; left: -26rpx; top: 0rpx" bindtap="jump" data-url="../message/message">
+        <image style="width:110rpx;height:110rpx;" src="../../img/personInformation.png" />
+        <text style="font-size: 30rpx;font-weight: bold;margin:10rpx">个人信息</text>
+      </view>
+      <view style="display: flex; flex-direction: column; align-items: center; margin-right: 60rpx; position: relative; left: 29rpx; top: 0rpx" bindtap="jump" data-url="../place/place">
+        <image style="width:110rpx;height:110rpx;" src="../../img/体检.png" />
+        <text style="font-size: 30rpx;font-weight: bold;margin:10rpx">场所扫码</text>
+      </view>
+
+      <view style="display:flex;flex-direction:column;align-items: center;" bindtap="jump" data-url="../citizen/citizen">
+        <image style="width:110rpx;height:110rpx;" src="../../img/caringMode.png" />
+        <text style="font-size: 30rpx;font-weight: bold;margin:10rpx">标准模式</text>
+      </view>
+
+
+    </view>
+
+    <!-- dot image -->
+    
+
+    <!-- bottom words -->
+    
+      
+
+
+  </view>
+
+</view>
+<!-- 使用wxs 手机号码中间四位显示为*号 -->
+<wxs module="cardID">
+  var toHide = function(array) {
+    var cardID = array.substring(0, 2) + '**************' + array.substring(15,17);
+    return cardID;
+  }
+  module.exports.toHide = toHide;
+</wxs>
+
