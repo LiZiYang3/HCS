@@ -189,7 +189,7 @@ public class CoderesultController extends BaseController
         return coderesultService.selectCoderesultListWithPlaceName(coderesult);
     }
 
-    @GetMapping("/addCodeResult")
+    @RequestMapping("/addCodeResult")
     @ResponseBody
     public AjaxResult addCodeResult(@RequestParam String id, @RequestParam String pid)
     {
