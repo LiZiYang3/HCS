@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.ruoyi.detection.domain.Detectionresult;
 import com.ruoyi.user.domain.Citizen;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,16 @@ public class TesttubeController extends BaseController
         startPage();
         List<Testtube> list = testtubeService.selectTesttubeList(testtube);
         return getDataTable(list);
+    }
+
+    @PostMapping("/search")
+    @ResponseBody
+    public List<Testtube> search(@RequestParam String id)
+    {
+        Testtube testtube = new Testtube();
+        testtube.setTid(id);
+        startPage();
+        return testtubeService.selectTesttubeList(testtube);
     }
 
     /**
